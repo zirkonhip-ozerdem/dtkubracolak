@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Locale, localeLabels, locales, routeMap, site, type Dictionary } from "@/lib/i18n";
@@ -61,19 +62,16 @@ export function SiteHeader({ lang, dictionary }: SiteHeaderProps) {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 lg:px-8">
-        <Link href={href("")} className="group flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#c9a36d] text-sm font-bold text-[#c9a36d]">
-            KC
-          </span>
-          <span className="leading-tight">
-            <span className="block text-sm font-bold uppercase tracking-[0.2em] text-[#252525]">
-              Dt. Kubra Colak
-            </span>
-            <span className="block text-[11px] uppercase tracking-[0.24em] text-[#8a8178]">
-              Agiz ve Dis Sagligi
-            </span>
-          </span>
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 lg:px-8">
+        <Link href={href("")} className="group flex h-full items-center">
+          <Image
+            src="/images/site/KUBRA_COLAK_LOGO_ONAY.png"
+            alt="Dt. Kübra Çolak"
+            width={200}
+            height={75}
+            className="h-20 w-auto"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 text-xs font-bold uppercase tracking-[0.14em] text-[#252525] lg:flex">
