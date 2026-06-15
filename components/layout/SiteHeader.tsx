@@ -27,6 +27,7 @@ export function SiteHeader({ lang, dictionary }: SiteHeaderProps) {
     { href: routeMap.about, label: nav.about },
     { href: routeMap.gallery, label: nav.gallery },
     { href: routeMap.blog, label: nav.blog },
+    { href: routeMap.faq, label: nav.faq },
     { href: routeMap.contact, label: nav.contact },
   ];
 
