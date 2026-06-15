@@ -33,7 +33,7 @@ export function SiteFooter({ lang, dictionary }: SiteFooterProps) {
               alt="Dt. Kübra Çolak"
               width={180}
               height={166}
-              className="h-32 w-auto object-contain"
+              className="h-32 w-auto object-contain md:ml-16"
               priority
             />
             <p className="mt-5 text-xs leading-6 text-[#d8d2ca]">
