@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { isLocale, type Locale, getDictionary, blogPosts } from "@/lib/i18n";
+import { isLocale, type Locale, blogPosts } from "@/lib/i18n";
 import { PageHero } from "@/components/shared/PageHero";
 import Link from "next/link";
 import Image from "next/image"; // Görsel optimizasyonu için eklendi
@@ -21,8 +21,6 @@ export default async function BlogPostDetailPage({ params }: BlogPostDetailPageP
   }
 
   const currentLang = lang as Locale;
-  const dictionary = getDictionary(currentLang);
-
   // 2. İlgili blog yazısını bul
   const post = blogPosts.find((p) => p.slug === slug);
 
@@ -30,8 +28,8 @@ export default async function BlogPostDetailPage({ params }: BlogPostDetailPageP
   const title = post?.title?.[currentLang] || (currentLang === "tr" ? "İzmir Balçova'da Gülüş Tasarımı Yaklaşımları" : "Smile Design in Izmir Balçova");
   const excerpt = post?.excerpt?.[currentLang] || "";
   
-  // ✨ TypeScript kızarıklığını engellemek için (post as any) şeklinde güvenli cast uygulandı
-  const featuredImage = (post as any)?.image || "/images/site/smile-consultation.png";
+  const featuredImage =
+    (post as { image?: string } | undefined)?.image || "/images/site/smile-consultation.png";
 
   // DİLLERE GÖRE SAĞLIK MEVZUATINA UYGUN TASLAK İÇERİK
   let sampleContent = null;
@@ -54,7 +52,7 @@ export default async function BlogPostDetailPage({ params }: BlogPostDetailPageP
         </ul>
 
         <blockquote className="border-l-4 border-[#c9a36d] bg-[#faf9f6] p-5 my-8 rounded-r-sm italic text-[#5d5751]">
-          "Biyomimetik yaklaşımın temeli, doğal diş dokusunu koruyarak doğanın sunduğu estetiği desteklemektir."
+          &quot;Biyomimetik yaklaşımın temeli, doğal diş dokusunu koruyarak doğanın sunduğu estetiği desteklemektir.&quot;
         </blockquote>
 
         <h3 className="text-xl sm:text-2xl font-serif text-[#252525] mt-10 mb-4">Dijital Yöntemler</h3>

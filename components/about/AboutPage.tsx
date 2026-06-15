@@ -1,16 +1,14 @@
-import { Locale, type Dictionary } from "@/lib/i18n";
+import { type Dictionary } from "@/lib/i18n";
 import { ShieldCheck, Cpu, Heart, Award, CheckCircle2, Star } from "lucide-react"; 
 import { PageHero } from "@/components/shared/PageHero";
 import Image from "next/image";
 
 type AboutPageProps = {
-  lang: Locale;
   dictionary: Dictionary;
 };
 
-export default function AboutPage({ lang, dictionary }: AboutPageProps) {
-  // TypeScript kızarmasın diye objeyi Record yapısına zorluyoruz
-  const t = dictionary.about as Record<string, any>;
+export default function AboutPage({ dictionary }: AboutPageProps) {
+  const t = dictionary.about;
 
   // storyTitle metnini ":" işaretine göre ikiye bölüyoruz
   const titleParts = t?.storyTitle ? String(t.storyTitle).split(":") : [];

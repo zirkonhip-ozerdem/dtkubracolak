@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import AboutPage from "@/components/about/AboutPage";
-import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
+import { getDictionary, isLocale } from "@/lib/i18n";
 
 type PageProps = {
   params: Promise<{
@@ -15,5 +15,5 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  return <AboutPage lang={lang as Locale} dictionary={getDictionary(lang as Locale)} />;
+  return <AboutPage dictionary={getDictionary(lang)} />;
 }

@@ -9,7 +9,9 @@ type DoctorApproachProps = {
 };
 
 export function DoctorApproach({ lang, dictionary }: DoctorApproachProps) {
-  const aboutData = dictionary.about as Record<string, any>;
+  const aboutData = dictionary.about;
+  const valuesTitle = ("valuesTitle" in aboutData ? aboutData.valuesTitle : aboutData.whyTitle) as string;
+  const values = ("values" in aboutData ? aboutData.values : aboutData.whyItems) as readonly string[];
 
   return (
     <section className="bg-white px-6 py-20 lg:px-8">
@@ -27,7 +29,7 @@ export function DoctorApproach({ lang, dictionary }: DoctorApproachProps) {
             <div>
               <h3 className="font-semibold tracking-[0.08em] text-[#252525]">Dt. Kubra Colak</h3>
               <p className="mt-2 text-sm leading-6 text-[#6a625b]">
-                {aboutData?.lead || ""}
+                {aboutData.lead}
               </p>
             </div>
             {/* ButtonLink yerine doğrudan standart Link ve buton stillerini koyduk, hata ihtimalini sıfırladık */}
@@ -42,16 +44,15 @@ export function DoctorApproach({ lang, dictionary }: DoctorApproachProps) {
 
         <article className="border border-[#eee8df] bg-[#fbfaf8] p-8">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#c9a36d]">
-            {aboutData?.valuesTitle || ""}
+            {valuesTitle}
           </p>
           <ul className="mt-6 space-y-4 text-sm leading-6 text-[#5d5751]">
-            {Array.isArray(aboutData?.values) &&
-              (aboutData.values as string[]).map((value, index) => (
-                <li key={index} className="flex gap-3">
-                  <span className="mt-2 h-px w-7 bg-[#c9a36d]" />
-                  <span>{String(value)}</span>
-                </li>
-              ))}
+            {values.map((value) => (
+              <li key={value} className="flex gap-3">
+                <span className="mt-2 h-px w-7 bg-[#c9a36d]" />
+                <span>{value}</span>
+              </li>
+            ))}
           </ul>
         </article>
       </div>

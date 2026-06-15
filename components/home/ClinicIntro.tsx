@@ -8,8 +8,8 @@ type ClinicIntroProps = {
 };
 
 export function ClinicIntro({ lang, dictionary }: ClinicIntroProps) {
-  // TypeScript'in katı i18n kontrolünü esnetmek için veriyi alıyoruz
-  const aboutData = dictionary.about as Record<string, any>;
+  const aboutData = dictionary.about;
+  const clinicValues = ("values" in aboutData ? aboutData.values : aboutData.areas) as readonly string[];
 
   return (
     <section className="bg-white px-6 py-20 lg:px-8">
@@ -32,14 +32,12 @@ export function ClinicIntro({ lang, dictionary }: ClinicIntroProps) {
             {dictionary.home.clinicLead}
           </p>
           <div className="mt-8 space-y-4 text-sm leading-6 text-[#6a625b]">
-            {/* Array kontrolü yapıp key olarak index vererek kızarıklığı çözdük */}
-            {Array.isArray(aboutData?.values) &&
-              (aboutData.values as string[]).map((value, index) => (
-                <p key={index} className="flex gap-3">
-                  <span className="mt-3 h-px w-8 bg-[#c9a36d]" />
-                  <span>{String(value)}</span>
-                </p>
-              ))}
+            {clinicValues.map((value) => (
+              <p key={value} className="flex gap-3">
+                <span className="mt-3 h-px w-8 bg-[#c9a36d]" />
+                <span>{value}</span>
+              </p>
+            ))}
           </div>
           <div className="mt-8">
             <ButtonLink href={`/${lang}${routeMap.contact}`}>{dictionary.common.appointment}</ButtonLink>

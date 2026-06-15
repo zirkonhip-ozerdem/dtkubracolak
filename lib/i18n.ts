@@ -109,6 +109,62 @@ export const dictionaries = {
     treatments: {
       title: "Tedaviler",
       lead: "Diş sağlığınız, estetik beklentileriniz ve yaşam ritminiz birlikte değerlendirilerek tedavi süreci planlanır.",
+      implantSection: {
+        tab: "İmplant Tedavisi",
+        eyebrow: "Dijital planlama",
+        title: "İmplant süreci nasıl ilerler?",
+        summary:
+          "İmplant tedavisi; muayene, dijital planlama, cerrahi uygulama ve protez aşamalarının birlikte yönetildiği kişiye özel bir süreçtir.",
+        steps: [
+          {
+            title: "Muayene ve görüntüleme",
+            description: "Çene kemiği, diş eti sağlığı ve genel ağız yapısı dijital verilerle değerlendirilir.",
+          },
+          {
+            title: "Kişisel tedavi planı",
+            description: "İmplant konumu, protez ihtiyacı ve seans akışı hastanın beklentileriyle birlikte planlanır.",
+          },
+          {
+            title: "Cerrahi uygulama",
+            description: "Lokal anestezi altında konforlu bir uygulama hedeflenir ve iyileşme süreci takip edilir.",
+          },
+          {
+            title: "Protez ve kontrol",
+            description: "İyileşme tamamlandıktan sonra doğal görünümlü protez aşamasına geçilir.",
+          },
+        ],
+      },
+      categories: [
+        {
+          label: "Estetik ve Restoratif",
+          image: "/images/site/Estetik-Dis-Hekimligi.png",
+          items: [
+            { label: "Estetik Diş Hekimliği", href: "/tedaviler/estetik-dis-hekimligi" },
+            { label: "Diş Beyazlatma", href: "/tedaviler/dis-beyazlatma" },
+            { label: "Diş Dolgusu", href: "/tedaviler/dis-dolgusu" },
+            { label: "Restoratif Tedaviler", href: "/tedaviler/restoratif-tedaviler" },
+          ],
+        },
+        {
+          label: "Cerrahi ve İmplant",
+          image: "/images/site/Cene-Cerrahi.png",
+          items: [
+            { label: "Diş İmplantı", href: "/tedaviler/dis-implanti" },
+            { label: "Diş Çekimi", href: "/tedaviler/dis-cekimi" },
+            { label: "Periodontoloji", href: "/tedaviler/periodontoloji" },
+          ],
+        },
+        {
+          label: "Koruyucu Tedaviler",
+          image: "/images/site/pedodonti.png",
+          items: [
+            { label: "Pedodonti", href: "/tedaviler/pedodonti" },
+            { label: "Diş Taşı Temizliği", href: "/tedaviler/dis-tasi-temizligi" },
+            { label: "Endodonti", href: "/tedaviler/endodonti" },
+            { label: "Kanal Tedavisi", href: "/tedaviler/kanal-tedavisi" },
+          ],
+        },
+      ],
     },
     gallery: {
       title: "Galeri",
@@ -224,6 +280,62 @@ export const dictionaries = {
     treatments: {
       title: "Treatments",
       lead: "Your oral health, aesthetic expectations and daily rhythm are evaluated together before treatment is planned.",
+      implantSection: {
+        tab: "Implant Treatment",
+        eyebrow: "Digital planning",
+        title: "How does the implant process work?",
+        summary:
+          "Implant treatment is a personalized process that brings examination, digital planning, surgical placement and prosthetic restoration together.",
+        steps: [
+          {
+            title: "Examination and imaging",
+            description: "Jaw bone, gum health and oral structure are assessed with digital data.",
+          },
+          {
+            title: "Personal treatment plan",
+            description: "Implant position, prosthetic needs and appointment flow are planned around expectations.",
+          },
+          {
+            title: "Surgical placement",
+            description: "A comfortable procedure is targeted under local anesthesia and healing is followed closely.",
+          },
+          {
+            title: "Restoration and follow-up",
+            description: "After healing, the natural-looking prosthetic restoration phase begins.",
+          },
+        ],
+      },
+      categories: [
+        {
+          label: "Aesthetic and Restorative",
+          image: "/images/site/Estetik-Dis-Hekimligi.png",
+          items: [
+            { label: "Aesthetic Dentistry", href: "/tedaviler/estetik-dis-hekimligi" },
+            { label: "Teeth Whitening", href: "/tedaviler/dis-beyazlatma" },
+            { label: "Dental Filling", href: "/tedaviler/dis-dolgusu" },
+            { label: "Restorative Treatments", href: "/tedaviler/restoratif-tedaviler" },
+          ],
+        },
+        {
+          label: "Surgery and Implant",
+          image: "/images/site/Cene-Cerrahi.png",
+          items: [
+            { label: "Dental Implant", href: "/tedaviler/dis-implanti" },
+            { label: "Tooth Extraction", href: "/tedaviler/dis-cekimi" },
+            { label: "Periodontology", href: "/tedaviler/periodontoloji" },
+          ],
+        },
+        {
+          label: "Preventive Treatments",
+          image: "/images/site/pedodonti.png",
+          items: [
+            { label: "Pediatric Dentistry", href: "/tedaviler/pedodonti" },
+            { label: "Dental Scaling", href: "/tedaviler/dis-tasi-temizligi" },
+            { label: "Endodontics", href: "/tedaviler/endodonti" },
+            { label: "Root Canal Treatment", href: "/tedaviler/kanal-tedavisi" },
+          ],
+        },
+      ],
     },
     gallery: {
       title: "Gallery",
@@ -339,6 +451,62 @@ export const dictionaries = {
     treatments: {
       title: "Behandlungen",
       lead: "Ihre Mundgesundheit, ästhetischen Erwartungen und Ihr Alltag werden gemeinsam betrachtet, bevor die Behandlung geplant wird.",
+      implantSection: {
+        tab: "Implantatbehandlung",
+        eyebrow: "Digitale Planung",
+        title: "Wie läuft der Implantatprozess ab?",
+        summary:
+          "Die Implantatbehandlung ist ein individueller Prozess aus Untersuchung, digitaler Planung, chirurgischer Umsetzung und prothetischer Versorgung.",
+        steps: [
+          {
+            title: "Untersuchung und Bildgebung",
+            description: "Kieferknochen, Zahnfleisch und Mundstruktur werden mit digitalen Daten bewertet.",
+          },
+          {
+            title: "Persönlicher Behandlungsplan",
+            description: "Implantatposition, prothetischer Bedarf und Terminablauf werden individuell geplant.",
+          },
+          {
+            title: "Chirurgische Umsetzung",
+            description: "Unter lokaler Anästhesie wird ein komfortabler Ablauf angestrebt und die Heilung begleitet.",
+          },
+          {
+            title: "Prothetik und Kontrolle",
+            description: "Nach der Heilung beginnt die Phase der natürlich wirkenden prothetischen Versorgung.",
+          },
+        ],
+      },
+      categories: [
+        {
+          label: "Ästhetik und Restauration",
+          image: "/images/site/Estetik-Dis-Hekimligi.png",
+          items: [
+            { label: "Ästhetische Zahnmedizin", href: "/tedaviler/estetik-dis-hekimligi" },
+            { label: "Zahnaufhellung", href: "/tedaviler/dis-beyazlatma" },
+            { label: "Zahnfüllung", href: "/tedaviler/dis-dolgusu" },
+            { label: "Restaurative Behandlungen", href: "/tedaviler/restoratif-tedaviler" },
+          ],
+        },
+        {
+          label: "Chirurgie und Implantat",
+          image: "/images/site/Cene-Cerrahi.png",
+          items: [
+            { label: "Zahnimplantat", href: "/tedaviler/dis-implanti" },
+            { label: "Zahnentfernung", href: "/tedaviler/dis-cekimi" },
+            { label: "Parodontologie", href: "/tedaviler/periodontoloji" },
+          ],
+        },
+        {
+          label: "Vorbeugende Behandlungen",
+          image: "/images/site/pedodonti.png",
+          items: [
+            { label: "Kinderzahnmedizin", href: "/tedaviler/pedodonti" },
+            { label: "Zahnsteinentfernung", href: "/tedaviler/dis-tasi-temizligi" },
+            { label: "Endodontie", href: "/tedaviler/endodonti" },
+            { label: "Wurzelkanalbehandlung", href: "/tedaviler/kanal-tedavisi" },
+          ],
+        },
+      ],
     },
     gallery: {
       title: "Galerie",
