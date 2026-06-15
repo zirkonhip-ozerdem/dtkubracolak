@@ -25,20 +25,17 @@ export function SiteFooter({ lang, dictionary }: SiteFooterProps) {
     <footer className="bg-[#1a1a1a] text-white border-t border-white/5">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 md:grid-cols-4 lg:px-8">
         
-        {/* 1. KOLON: LOGO & ÖZET (Logo büyütüldü) */}
+        {/* 1. KOLON: LOGO & ÖZET */}
         <div className="flex flex-col items-start space-y-6">
           <div className="pt-2">
-            <div className="flex flex-col items-center justify-center">
-              <div className="relative h-32 w-32 flex-shrink-0 rounded-full overflow-hidden bg-[#1a1a1a]">
-                <Image
-                  src="/images/site/KUBRA_COLAK_LOGO_ONAY.png"
-                  alt="Dt. Kübra Çolak Amblem"
-                  fill
-                  className="object-contain scale-[1.85]" 
-                  priority
-                />
-              </div>
-            </div>
+            <Image
+              src="/images/site/KUBRA_COLAK_LOGO_ONAY_TRANSPARENT.png"
+              alt="Dt. Kübra Çolak"
+              width={180}
+              height={166}
+              className="h-32 w-auto object-contain"
+              priority
+            />
             <p className="mt-5 text-xs leading-6 text-[#d8d2ca]">
               {footerDic.summary}
             </p>
