@@ -31,7 +31,7 @@ export function SiteFooter({ lang, dictionary }: SiteFooterProps) {
             <div className="flex flex-col items-center justify-center">
               <div className="relative h-32 w-32 flex-shrink-0 rounded-full overflow-hidden bg-[#1a1a1a]">
                 <Image
-                  src="/images/site/KUBRA-COLAK-LOGO-ONAY.png"
+                  src="/images/site/KUBRA_COLAK_LOGO_ONAY.png"
                   alt="Dt. Kübra Çolak Amblem"
                   fill
                   className="object-contain scale-[1.85]" 
