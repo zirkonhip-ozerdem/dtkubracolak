@@ -23,6 +23,7 @@ const galleryItems = [
     src: "/images/site/clinic-room.png",
     ratio: "aspect-[16/10]",
   },
+  // Branch refresh
 ] as const;
 
 export function GalleryPage({ dictionary }: GalleryPageProps) {
