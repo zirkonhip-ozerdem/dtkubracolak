@@ -53,9 +53,9 @@ export function FaqPage({ lang, dictionary }: FaqPageProps) {
 
   return (
     <>
-      <PageHero 
-        title={dictionary.faq?.title || "Sıkça Sorulan Sorular"} 
-        lead={dictionary.faq?.lead || "Klinik tedavileri, süreçler ve merak ettiğiniz tüm detaylar hakkında cevaplar."} 
+      <PageHero
+        title={dictionary.faq?.title || "Sıkça Sorulan Sorular"}
+        lead={dictionary.faq?.lead || "Klinik tedavileri, süreçler ve merak ettiğiniz tüm detaylar hakkında cevaplar."}
       />
 
       <script
