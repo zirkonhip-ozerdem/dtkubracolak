@@ -147,7 +147,7 @@ export default async function Page({ params }: PageProps<"/[lang]/tedaviler/este
             <p className="mt-6 text-base leading-8 text-[#5d5751]">
               Laminate veneer, dişin ön yüzeyine ultra ince (0,3–0,5 mm) porselen plakların
               yapıştırıldığı, minimum diş traşlamasıyla maksimum estetik sonuç sunan bir
-              uygulamadır. "Porselen tırnak" olarak da bilinir.
+              uygulamadır. &quot;Porselen tırnak&quot; olarak da bilinir.
             </p>
             <ul className="mt-8 space-y-5">
               <li className="border-l-4 border-[#eee8df] pl-6">

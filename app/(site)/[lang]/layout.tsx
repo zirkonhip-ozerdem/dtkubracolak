@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
 
 export function generateStaticParams() {
@@ -21,6 +22,7 @@ export default async function SiteLocaleLayout({
     <>
       <SiteHeader lang={lang} dictionary={dictionary} />
       <main>{children}</main>
+      <WhatsAppButton />
       <SiteFooter lang={lang} dictionary={dictionary} />
     </>
   );

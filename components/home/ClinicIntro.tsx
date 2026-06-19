@@ -8,10 +8,13 @@ type ClinicIntroProps = {
 };
 
 export function ClinicIntro({ lang, dictionary }: ClinicIntroProps) {
+  const aboutData = dictionary.about;
+  const clinicValues = ("values" in aboutData ? aboutData.values : aboutData.areas) as readonly string[];
+
   return (
     <section className="bg-white px-6 py-20 lg:px-8">
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="relative aspect-[4/3] overflow-hidden bg-[#f3eee7]" style={{ position: 'relative' }}>
+        <div className="relative aspect-[4/3] overflow-hidden bg-[#f3eee7]">
           <Image
             src="/images/site/clinic-room.png"
             alt="Modern dental clinic treatment room"
@@ -29,7 +32,7 @@ export function ClinicIntro({ lang, dictionary }: ClinicIntroProps) {
             {dictionary.home.clinicLead}
           </p>
           <div className="mt-8 space-y-4 text-sm leading-6 text-[#6a625b]">
-            {dictionary.about.values.map((value) => (
+            {clinicValues.map((value) => (
               <p key={value} className="flex gap-3">
                 <span className="mt-3 h-px w-8 bg-[#c9a36d]" />
                 <span>{value}</span>

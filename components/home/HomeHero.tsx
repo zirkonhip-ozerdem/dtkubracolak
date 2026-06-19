@@ -9,7 +9,7 @@ type HomeHeroProps = {
 
 export function HomeHero({ lang, dictionary }: HomeHeroProps) {
   return (
-    <section className="relative min-h-[620px] overflow-hidden bg-[#f6f1ea]" style={{ position: 'relative' }}>
+    <section className="relative min-h-[620px] overflow-hidden bg-[#f6f1ea]">
       <Image
         src="/images/site/dental-hero.png"
         alt=""

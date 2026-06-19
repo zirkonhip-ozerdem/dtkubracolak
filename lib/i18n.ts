@@ -1,5 +1,14 @@
 export const locales = ["tr", "en", "de"] as const;
+
 export type Locale = (typeof locales)[number];
+
+export function isLocale(value: string): value is Locale {
+  return locales.includes(value as Locale);
+}
+
+export function getLocale(value: string): Locale {
+  return isLocale(value) ? value : "tr";
+}
 
 export const localeLabels: Record<Locale, string> = {
   tr: "TR",
@@ -7,8 +16,535 @@ export const localeLabels: Record<Locale, string> = {
   de: "DE",
 };
 
-export function isLocale(value: string): value is Locale {
-  return (locales as readonly string[]).includes(value);
+export const site = {
+  phone: "+90 530 000 00 00",
+  phoneHref: "tel:+905300000000",
+  email: "info@dtkubracolak.com",
+  emailHref: "mailto:info@dtkubracolak.com",
+  address: "İzmir, Türkiye",
+  mapsLabel: "Klinik konumu",
+};
+
+export const dictionaries = {
+  tr: {
+    meta: {
+      title: "Dt. Kübra Çolak | Hakkımda",
+      description: "Dt. Kübra Çolak Ağız ve Diş Sağlığı Muayenehanesi.",
+    },
+    nav: {
+      home: "Ana Sayfa",
+      about: "Hakkımda",
+      treatments: "Tedaviler",
+      gallery: "Galeri",
+      blog: "Blog",
+      faq: "S.S.S.",
+      contact: "İletişim",
+    },
+    common: {
+      details: "Detaylı Bilgi",
+      appointment: "Randevu Al",
+      allTreatments: "Tüm Tedaviler",
+      send: "Gönder",
+      name: "Ad Soyad",
+      email: "E-posta",
+      phone: "Telefon",
+      message: "Mesajınız",
+      required: "Zorunlu alan",
+    },
+    home: {
+      heroEyebrow: "Dt. Kübra Çolak",
+      heroTitle: "Sağlıklı ve işlevsel bir gülüş için modern diş hekimliği",
+      heroLead:
+        "Koruyucu diş hekimliği, estetik uygulamalar ve dijital tedavi planlamasını sakin, güven veren bir klinik deneyimiyle buluşturuyoruz.",
+      doctorsTitle: "Hekim Yaklaşımı",
+      doctorsKicker: "Size ayrılan özen",
+      doctorsLead:
+        "Her tedavi planı detaylı muayene, şeffaf bilgilendirme ve uzun vadeli ağız sağlığı hedefleriyle hazırlanır.",
+      servicesTitle: "Tedaviler",
+      servicesLead: "İhtiyacınıza göre planlanan kapsamlı diş hekimliği çözümleri.",
+      clinicTitle: "Klinik",
+      clinicLead:
+        "Sterilizasyon protokolleri, dijital cihazlar ve hasta konforunu öne alan yalın bir klinik akışı.",
+      contactTitle: "İletişime Geçin",
+      contactLead:
+        "Muayene, tedavi planlaması veya kontrol randevuları için bizimle iletişime geçebilirsiniz.",
+    },
+    about: {
+      title: "Hakkımda",
+      lead: "Uluslararası standartlarda, bilimsel doğruluk ve hasta memnuniyeti odaklı modern diş hekimliği.",
+      missionTitle: "Misyonumuz",
+      missionText: "Güncel dijital diş hekimliği altyapısını ve kanıta dayalı tedavi protokollerini, her hastamız için sakin, şeffaf ve güven veren bir klinik deneyimiyle buluşturmak.",
+      visionTitle: "Vizyonumuz",
+      visionText: "Doğal diş dokusunu koruyan biyomimetik yaklaşımları merkeze alarak, İzmir'de sürdürülebilir ağız ve diş sağlığı çözümlerinde öncü ve referans bir muayenehane olmak.",
+      ethicsTitle: "Tıbbi Etik & Şeffaflık",
+      ethicsDesc: "Tüm tedavi süreçlerinde mevzuatlara, hasta haklarına ve şeffaf bilgilendirme ilkelerine tam uyum.",
+      digitalTitle: "Dijital & Biyomimetik",
+      digitalDesc: "Doğal diş dokusunu maksimum düzeyde koruyan yenilikçi teknolojiler ve güncel materyal kullanımı.",
+      comfortTitle: "Hasta Konforu & Güven",
+      comfortDesc: "Sterilizasyon standartlarından asla ödün vermeyen, kaygılardan uzak, huzurlu bir klinik ortamı.",
+      
+      // Üst taraftaki fotoğraflı ana hikaye
+      storyTitle: "Dt. Kübra Çolak: Gülüşünüzdeki Sağlık ve Estetik",
+      story: "  Selçuk Üniversitesi Diş Hekimliği Fakültesi mezunu olan Dt. Kübra Çolak, 2020 yılından bu yana diş hekimliği alanında modern ve çözüm odaklı yaklaşımlarıyla hizmet vermektedir. Meslek hayatına Manisa Deva Tıp Merkezi’nde adım atan Çolak, ardından Dental Estetik Center ve Asya Dental Ağız ve Diş Sağlığı Polikliniği gibi prestijli kliniklerde görev alarak geniş bir vaka tecrübesi edinmiştir. 2025 yılı itibarıyla İzmir Balçova’daki kendi muayenehanesinde hastalarını kabul etmeye başlayan Dt. Kübra Çolak, 'kişiye özel diş hekimliği' anlayışıyla İzmir’de sağlıklı gülüşlere imza atmaktadır.",
+      
+      // Alttaki sol kart: Neden Biz?
+      whyTitle: "Neden Dt. Kübra Çolak?",
+      whyItems: [
+        "Deneyim: Kamu ve özel sektörde geçen 6 yıllık aktif klinik tecrübe ve geniş vaka uzmanlığı.",
+        "Güncel Teknoloji: Dijital diş hekimliği, lazer uygulamaları ve 3D görüntüleme sistemleri.",
+        "Kişiselleştirilmiş Bakım: Hastaya özel şekillenen estetik ve fonksiyonel çözümler.",
+        "Konforlu Tedavi: Genel anestezi ve sedasyon seçenekleriyle fobi oluşturmayan rahat süreç."
+      ],
+      
+      // Alttaki sağ kart: Çalışma Alanları
+      areasTitle: "Klinik Odak ve Çalışma Alanları",
+      areasLead: "Bilimsel gelişmeler ışığında muayenehanemizde öncelik verdiğimiz başlıca uzmanlık alanları:",
+      areas: [
+        "Dijital Diş Hekimliği & Gülüş Yaklaşımları",
+        "Biyomimetik ve Estetik Restorasyonlar",
+        "Endodonti (Kök Kanal Tedavileri)",
+        "Koruyucu ve Önleyici Diş Hekimliği"
+      ]
+    },
+    treatments: {
+      title: "Tedaviler",
+      lead: "Diş sağlığınız, estetik beklentileriniz ve yaşam ritminiz birlikte değerlendirilerek tedavi süreci planlanır.",
+      implantSection: {
+        tab: "İmplant Tedavisi",
+        eyebrow: "Dijital planlama",
+        title: "İmplant süreci nasıl ilerler?",
+        summary:
+          "İmplant tedavisi; muayene, dijital planlama, cerrahi uygulama ve protez aşamalarının birlikte yönetildiği kişiye özel bir süreçtir.",
+        steps: [
+          {
+            title: "Muayene ve görüntüleme",
+            description: "Çene kemiği, diş eti sağlığı ve genel ağız yapısı dijital verilerle değerlendirilir.",
+          },
+          {
+            title: "Kişisel tedavi planı",
+            description: "İmplant konumu, protez ihtiyacı ve seans akışı hastanın beklentileriyle birlikte planlanır.",
+          },
+          {
+            title: "Cerrahi uygulama",
+            description: "Lokal anestezi altında konforlu bir uygulama hedeflenir ve iyileşme süreci takip edilir.",
+          },
+          {
+            title: "Protez ve kontrol",
+            description: "İyileşme tamamlandıktan sonra doğal görünümlü protez aşamasına geçilir.",
+          },
+        ],
+      },
+      categories: [
+        {
+          label: "Estetik ve Restoratif",
+          image: "/images/site/Estetik-Dis-Hekimligi.png",
+          items: [
+            { label: "Estetik Diş Hekimliği", href: "/tedaviler/estetik-dis-hekimligi" },
+            { label: "Diş Beyazlatma", href: "/tedaviler/dis-beyazlatma" },
+            { label: "Diş Dolgusu", href: "/tedaviler/dis-dolgusu" },
+            { label: "Restoratif Tedaviler", href: "/tedaviler/restoratif-tedaviler" },
+          ],
+        },
+        {
+          label: "Cerrahi ve İmplant",
+          image: "/images/site/Cene-Cerrahi.png",
+          items: [
+            { label: "Diş İmplantı", href: "/tedaviler/dis-implanti" },
+            { label: "Diş Çekimi", href: "/tedaviler/dis-cekimi" },
+            { label: "Periodontoloji", href: "/tedaviler/periodontoloji" },
+          ],
+        },
+        {
+          label: "Koruyucu Tedaviler",
+          image: "/images/site/pedodonti.png",
+          items: [
+            { label: "Pedodonti", href: "/tedaviler/pedodonti" },
+            { label: "Diş Taşı Temizliği", href: "/tedaviler/dis-tasi-temizligi" },
+            { label: "Endodonti", href: "/tedaviler/endodonti" },
+            { label: "Kanal Tedavisi", href: "/tedaviler/kanal-tedavisi" },
+          ],
+        },
+      ],
+    },
+    gallery: {
+      title: "Galeri",
+      lead: "Klinik atmosferi, tedavi odaları ve hasta deneyimine dair seçili kareler.",
+    },
+    blog: {
+      title: "Blog",
+      lead: "Ağız ve diş sağlığı hakkında kısa, anlaşılır ve bilgilendirici paylaşımlar.",
+      readTime: "dk okuma",
+    },
+    faq: {
+      title: "Sıkça Sorulan Sorular",
+      lead: "Klinik tedavileri, süreçler ve merak ettiğiniz detaylar hakkında bilgilendirmeler.",
+    },
+    contact: {
+      title: "İletişim",
+      lead: "Sorularınız ve randevu talepleriniz için formu doldurabilir ya da doğrudan bize ulaşabilirsiniz.",
+      formTitle: "Randevu ve bilgi talebi",
+      infoTitle: "Klinik bilgileri",
+    },
+    footer: {
+      summary: "İzmir Balçova'daki muayenehanemizde, güncel diş hekimliği yaklaşımları ve hasta odaklı planlamalarla ağız ve diş sağlığı alanında hizmet vermekteyiz.",
+      quickLinks: "Kurumsal",
+      contact: "Bize Ulaşın",
+      rights: "Tüm Hakları Saklıdır.",
+      title: "Diş Hekimi",
+      kvkk: "KVKK Aydınlatma Metni",
+      cookiePolicy: "Çerez Politikası",
+      workingHours: "Pazartesi - Cumartesi: 09:00 - 19:00",
+      legalDisclaimer: "Sitede yer alan klinik ve tıbbi bilgiler, kullanıcıları bilgilendirme amaçlı olup; kesinlikle bir teşhis, tanı veya tedavi yöntemi seçimi niteliği taşımaz."
+    },
+  },
+  en: {
+    meta: {
+      title: "Dentist Kübra Çolak | About Me",
+      description: "About Dentist Kübra Çolak Oral and Dental Health Clinic.",
+    },
+    nav: {
+      home: "Home",
+      about: "About Me",
+      treatments: "Treatments",
+      gallery: "Gallery",
+      blog: "Blog",
+      faq: "F.A.Q.",
+      contact: "Contact",
+    },
+    common: {
+      details: "Learn More",
+      appointment: "Book Appointment",
+      allTreatments: "All Treatments",
+      send: "Send",
+      name: "Full Name",
+      email: "Email",
+      phone: "Phone",
+      message: "Your Message",
+      required: "Required field",
+    },
+    home: {
+      heroEyebrow: "Dentist Kübra Çolak",
+      heroTitle: "Modern dentistry for a healthy and functional smile",
+      heroLead:
+        "We combine preventive dentistry, aesthetic treatments and digital planning with a calm, reassuring clinic experience.",
+      doctorsTitle: "Clinical Approach",
+      doctorsKicker: "Care designed around you",
+      doctorsLead:
+        "Every treatment plan starts with a detailed examination, transparent guidance and long-term oral health goals.",
+      servicesTitle: "Treatments",
+      servicesLead: "Comprehensive dental solutions planned around your needs.",
+      clinicTitle: "Clinic",
+      clinicLead:
+        "A streamlined clinical flow shaped by sterilization protocols, digital equipment and patient comfort.",
+      contactTitle: "Get In Touch",
+      contactLead:
+        "Contact us for examinations, treatment planning or follow-up appointments.",
+    },
+    about: {
+      title: "About Me",
+      lead: "Modern dentistry based on international standards, scientific accuracy, and patient satisfaction.",
+      missionTitle: "Our Mission",
+      missionText: "To bring together up-to-date digital dentistry infrastructure and evidence-based treatment protocols with a calm, transparent, and reassuring clinical experience for every patient.",
+      visionTitle: "Our Vision",
+      visionText: "To become a pioneering and reference clinic in sustainable oral and dental health solutions in Izmir, centering on biomimetic approaches that preserve natural tooth structure.",
+      ethicsTitle: "Medical Ethics & Transparency",
+      ethicsDesc: "Full compliance with regulations, patient rights, and transparent information principles in all treatment processes.",
+      digitalTitle: "Digital & Biomimetic",
+      digitalDesc: "Innovative technologies and up-to-date material usage that maximize the preservation of natural tooth structure.",
+      comfortTitle: "Patient Comfort & Trust",
+      comfortDesc: "A peaceful clinical environment far from anxiety, never compromising on sterilization standards.",
+      
+      // Upper section main story
+      storyTitle: "Dt. Kübra Çolak: Health and Aesthetics in Your Smile",
+      story: "Graduated from Selçuk University Faculty of Dentistry, Dt. Kübra Çolak has been providing service with modern and solution-oriented approaches in the field of dentistry since 2020. Stepping into her professional life at Manisa Deva Medical Center, Çolak then gained extensive case experience by working in prestigious clinics such as Dental Estetik Center and Asya Dental Oral and Dental Health Polyclinic. Accepting patients in her own clinic in Izmir Balçova as of 2025, Dt. Kübra Çolak signs healthy smiles in Izmir with the understanding of 'personalized dentistry'.",
+      
+      // Bottom left card: Why Us?
+      whyTitle: "Why Dt. Kübra Çolak?",
+      whyItems: [
+        "Experience: 6 years of active clinical experience and extensive case expertise in both public and private sectors.",
+        "Up-to-Date Technology: Modern treatment methods with digital dentistry, laser applications, and 3D imaging systems.",
+        "Personalized Care: Aesthetic and functional solutions tailored to the patient.",
+        "Comfortable Treatment: A relaxed treatment process without phobia, thanks to general anesthesia and sedation options."
+      ],
+      
+      // Bottom right card: Clinical Focus Areas
+      areasTitle: "Clinical Focus and Fields of Activity",
+      areasLead: "Main specialization areas we prioritize in our clinic in the light of scientific developments:",
+      areas: [
+        "Digital Dentistry & Smile Approaches",
+        "Biomimetic and Aesthetic Restorasyonlar",
+        "Endodontics (Root Canal Treatments)",
+        "Protective and Preventive Dentistry"
+      ]
+    },
+    treatments: {
+      title: "Treatments",
+      lead: "Your oral health, aesthetic expectations and daily rhythm are evaluated together before treatment is planned.",
+      implantSection: {
+        tab: "Implant Treatment",
+        eyebrow: "Digital planning",
+        title: "How does the implant process work?",
+        summary:
+          "Implant treatment is a personalized process that brings examination, digital planning, surgical placement and prosthetic restoration together.",
+        steps: [
+          {
+            title: "Examination and imaging",
+            description: "Jaw bone, gum health and oral structure are assessed with digital data.",
+          },
+          {
+            title: "Personal treatment plan",
+            description: "Implant position, prosthetic needs and appointment flow are planned around expectations.",
+          },
+          {
+            title: "Surgical placement",
+            description: "A comfortable procedure is targeted under local anesthesia and healing is followed closely.",
+          },
+          {
+            title: "Restoration and follow-up",
+            description: "After healing, the natural-looking prosthetic restoration phase begins.",
+          },
+        ],
+      },
+      categories: [
+        {
+          label: "Aesthetic and Restorative",
+          image: "/images/site/Estetik-Dis-Hekimligi.png",
+          items: [
+            { label: "Aesthetic Dentistry", href: "/tedaviler/estetik-dis-hekimligi" },
+            { label: "Teeth Whitening", href: "/tedaviler/dis-beyazlatma" },
+            { label: "Dental Filling", href: "/tedaviler/dis-dolgusu" },
+            { label: "Restorative Treatments", href: "/tedaviler/restoratif-tedaviler" },
+          ],
+        },
+        {
+          label: "Surgery and Implant",
+          image: "/images/site/Cene-Cerrahi.png",
+          items: [
+            { label: "Dental Implant", href: "/tedaviler/dis-implanti" },
+            { label: "Tooth Extraction", href: "/tedaviler/dis-cekimi" },
+            { label: "Periodontology", href: "/tedaviler/periodontoloji" },
+          ],
+        },
+        {
+          label: "Preventive Treatments",
+          image: "/images/site/pedodonti.png",
+          items: [
+            { label: "Pediatric Dentistry", href: "/tedaviler/pedodonti" },
+            { label: "Dental Scaling", href: "/tedaviler/dis-tasi-temizligi" },
+            { label: "Endodontics", href: "/tedaviler/endodonti" },
+            { label: "Root Canal Treatment", href: "/tedaviler/kanal-tedavisi" },
+          ],
+        },
+      ],
+    },
+    gallery: {
+      title: "Gallery",
+      lead: "Selected views of the clinic atmosphere, treatment rooms and patient experience.",
+    },
+    blog: {
+      title: "Blog",
+      lead: "Short, practical and informative notes on oral and dental health.",
+      readTime: "min read",
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      lead: "Information about clinical treatments, processes, and frequently wondered details.",
+    },
+    contact: {
+      title: "Contact",
+      lead: "Use the form for questions and appointment requests, or contact us directly.",
+      formTitle: "Appointment and information request",
+      infoTitle: "Clinic details",
+    },
+    footer: {
+      summary: "In our clinic in Izmir Balcova, we provide services in the field of oral and dental health with modern dentistry approaches and patient-oriented planning.",
+      quickLinks: "Corporate",
+      contact: "Contact Us",
+      rights: "All Rights Reserved.",
+      title: "Dentist",
+      kvkk: "Clarification Text on KVKK",
+      cookiePolicy: "Cookie Policy",
+      workingHours: "Monday - Saturday: 09:00 - 19:00",
+      legalDisclaimer: "The clinical and medical information on this site is for informational purposes only and does not constitute a diagnosis, identification, or selection of a treatment method."
+    },
+  },
+  de: {
+    meta: {
+      title: "Zahnärztin Kübra Çolak | Über mich",
+      description: "Über Zahnärztin Kübra Çolak Praxis für Mund- und Zahngesundheit.",
+    },
+    nav: {
+      home: "Startseite",
+      about: "Über mich",
+      treatments: "Behandlungen",
+      gallery: "Galerie",
+      blog: "Blog",
+      faq: "F.A.Q.",
+      contact: "Kontakt",
+    },
+    common: {
+      details: "Mehr Erfahren",
+      appointment: "Termin Anfragen",
+      allTreatments: "Alle Behandlungen",
+      send: "Senden",
+      name: "Name",
+      email: "E-Mail",
+      phone: "Telefon",
+      message: "Ihre Nachricht",
+      required: "Pflichtfeld",
+    },
+    home: {
+      heroEyebrow: "Zahnärztin Kübra Çolak",
+      heroTitle: "Moderne Zahnmedizin für ein gesundes und funktionelles Lächeln",
+      heroLead:
+        "Wir verbinden vorbeugende Zahnmedizin, ästhetische Behandlungen und digitale Planung mit einer ruhigen, vertrauensvollen Praxserfahrung.",
+      doctorsTitle: "Praxisansatz",
+      doctorsKicker: "Sorgfalt für Ihre Bedürfnisse",
+      doctorsLead:
+        "Jeder Behandlungsplan beginnt mit einer gründlichen Untersuchung, klarer Beratung und langfristigen Zielen für die Mundgesundheit.",
+      servicesTitle: "Behandlungen",
+      servicesLead: "Umfassende zahnmedizinische Lösungen, geplant nach Ihrem Bedarf.",
+      clinicTitle: "Praxis",
+      clinicLead:
+        "Ein klarer Praxisablauf mit Sterilisationsprotokollen, digitaler Ausstattung und Fokus auf Patientenkomfort.",
+      contactTitle: "Kontakt Aufnehmen",
+      contactLead:
+        "Kontaktieren Sie uns für Untersuchungen, Behandlungsplanung oder Kontrolltermine.",
+    },
+    about: {
+      title: "Über Mich",
+      lead: "Moderne Zahnmedizin nach internationalen Standards, wissenschaftlicher Genauigkeit und Patientenzufriedenheit.",
+      missionTitle: "Unsere Mission",
+      missionText: "Die Kombination aus modernster digitaler zahnmedizinischer Infrastruktur und evidenzbasierten Behandlungsprotokollen mit einer ruhigen, transparenten und vertrauensvollen klinischen Erfahrung für jeden Patienten.",
+      visionTitle: "Unsere Vision",
+      visionText: "Eine wegweisende und referenzierte Praxis für nachhaltige Mund- und Zahngesundheitslösungen in Izmir zu sein, wobei biomimetische Ansätze im Vordergrund stehen, die die natürliche Zahnstruktur bewahren.",
+      ethicsTitle: "Medizinische Ethik & Transparenz",
+      ethicsDesc: "Volle Einhaltung von Vorschriften, Patientenrechten und transparenten Informationsprinzipien in allen Behandlungsprozessen.",
+      digitalTitle: "Digital & Biomimetisch",
+      digitalDesc: "Innovative Technologien und modernste Materialverwendung, die den Erhalt der natürlichen Zahnstruktur maximieren.",
+      comfortTitle: "Patientenkomfort & Vertrauen",
+      comfortDesc: "Eine friedliche klinische Umgebung fernab von Ängsten, ohne jemals Kompromisse bei den Sterilisationsstandards einzugehen.",
+      
+      // Upper section main story
+      storyTitle: "ZÄ. Kübra Çolak: Gesundheit und Ästhetik in Ihrem Lächeln",
+      story: "Nach ihrem Abschluss an der Zahnmedizinischen Fakultät der Selçuk-Universität bietet ZÄ. Kübra Çolak seit 2020 moderne und lösungsorientierte Ansätze im Bereich der Zahnmedizin an. Nach dem Einstieg in ihr Berufsleben im Manisa Deva Medizinischen Zentrum sammelte Çolak umfassende Fallerfahrungen durch ihre Tätigkeit in renommierten Kliniken wie dem Dental Estetik Center und der Asya Dental Poliklinik für Mund- und Zahngesundheit. Seit 2025 empfängt ZÄ. Kübra Çolak Patienten in ihrer eigenen Praxis in Izmir Balçova und sorgt mit dem Konzept der 'personalisierten Zahnmedizin' für ein gesundes Lächeln in Izmir.",
+      
+      // Bottom left card: Why Us?
+      whyTitle: "Warum ZÄ. Kübra Çolak?",
+      whyItems: [
+        "Erfahrung: 6 Jahre aktive klinische Erfahrung und umfassende Fallkompetenz sowohl im öffentlichen als auch im privaten Sektor.",
+        "Moderne Technologie: Moderne Behandlungsmethoden mit digitaler Zahnmedizin, Laseranwendungen und 3D-Bildgebungssystemen.",
+        "Individuelle Betreuung: Auf den Patienten zugeschnittene ästhetische und funktionelle Lösungen.",
+        "Komfortable Behandlung: Ein entspannter Behandlungsprozess ohne Ängste dank Vollnarkose- und Sedierungsoptionen."
+      ],
+      
+      // Bottom right card: Clinical Focus Areas
+      areasTitle: "Klinischer Fokus und Tätigkeitsbereiche",
+      areasLead: "Hauptspezialisierungsbereiche, die wir in unserer Praxis im Lichte wissenschaftlicher Entwicklungen priorisieren:",
+      areas: [
+        "Digitale Zahnmedizin & Lächeln-Design",
+        "Biomimetische und ästhetische Restaurationen",
+        "Endodontie (Wurzelkanalbehandlungen)",
+        "Prophylaxe und präventive Zahnheilkunde"
+      ]
+    },
+    treatments: {
+      title: "Behandlungen",
+      lead: "Ihre Mundgesundheit, ästhetischen Erwartungen und Ihr Alltag werden gemeinsam betrachtet, bevor die Behandlung geplant wird.",
+      implantSection: {
+        tab: "Implantatbehandlung",
+        eyebrow: "Digitale Planung",
+        title: "Wie läuft der Implantatprozess ab?",
+        summary:
+          "Die Implantatbehandlung ist ein individueller Prozess aus Untersuchung, digitaler Planung, chirurgischer Umsetzung und prothetischer Versorgung.",
+        steps: [
+          {
+            title: "Untersuchung und Bildgebung",
+            description: "Kieferknochen, Zahnfleisch und Mundstruktur werden mit digitalen Daten bewertet.",
+          },
+          {
+            title: "Persönlicher Behandlungsplan",
+            description: "Implantatposition, prothetischer Bedarf und Terminablauf werden individuell geplant.",
+          },
+          {
+            title: "Chirurgische Umsetzung",
+            description: "Unter lokaler Anästhesie wird ein komfortabler Ablauf angestrebt und die Heilung begleitet.",
+          },
+          {
+            title: "Prothetik und Kontrolle",
+            description: "Nach der Heilung beginnt die Phase der natürlich wirkenden prothetischen Versorgung.",
+          },
+        ],
+      },
+      categories: [
+        {
+          label: "Ästhetik und Restauration",
+          image: "/images/site/Estetik-Dis-Hekimligi.png",
+          items: [
+            { label: "Ästhetische Zahnmedizin", href: "/tedaviler/estetik-dis-hekimligi" },
+            { label: "Zahnaufhellung", href: "/tedaviler/dis-beyazlatma" },
+            { label: "Zahnfüllung", href: "/tedaviler/dis-dolgusu" },
+            { label: "Restaurative Behandlungen", href: "/tedaviler/restoratif-tedaviler" },
+          ],
+        },
+        {
+          label: "Chirurgie und Implantat",
+          image: "/images/site/Cene-Cerrahi.png",
+          items: [
+            { label: "Zahnimplantat", href: "/tedaviler/dis-implanti" },
+            { label: "Zahnentfernung", href: "/tedaviler/dis-cekimi" },
+            { label: "Parodontologie", href: "/tedaviler/periodontoloji" },
+          ],
+        },
+        {
+          label: "Vorbeugende Behandlungen",
+          image: "/images/site/pedodonti.png",
+          items: [
+            { label: "Kinderzahnmedizin", href: "/tedaviler/pedodonti" },
+            { label: "Zahnsteinentfernung", href: "/tedaviler/dis-tasi-temizligi" },
+            { label: "Endodontie", href: "/tedaviler/endodonti" },
+            { label: "Wurzelkanalbehandlung", href: "/tedaviler/kanal-tedavisi" },
+          ],
+        },
+      ],
+    },
+    gallery: {
+      title: "Galerie",
+      lead: "Ausgewählte Einblicke in Praxisatmosphäre, Behandlungsräume und Patientenerlebnis.",
+    },
+    blog: {
+      title: "Blog",
+      lead: "Kurze, verständliche und informative Beiträge rund um Mund- und Zahngesundheit.",
+      readTime: "Min. Lesezeit",
+    },
+    faq: {
+      title: "Häufig Gestellte Fragen",
+      lead: "Informationen zu klinischen Behandlungen, Prozessen und häufig gestellten Details.",
+    },
+    contact: {
+      title: "Kontakt",
+      lead: "Nutzen Sie das Formular für Fragen und Terminanfragen oder kontaktieren Sie uns direkt.",
+      formTitle: "Termin- und Informationsanfrage",
+      infoTitle: "Praxisdaten",
+    },
+    footer: {
+      summary: "In unserer Praxis in Izmir Balcova bieten wir Dienstleistungen im Bereich der Mund- und Zahngesundheit mit modernen zahnmedizinischen Ansätzen und patientenorientierter Planung an.",
+      quickLinks: "Praxisansatz",
+      contact: "Kontakt Aufnehmen",
+      rights: "Alle Rechte vorbehalten.",
+      title: "Zahnärztin",
+      kvkk: "Datenschutzerklärung (KVKK)",
+      cookiePolicy: "Cookie-Richtlinie",
+      workingHours: "Montag - Samstag: 09:00 - 19:00",
+      legalDisclaimer: "Die auf der Website enthaltenen klinischen und medizinischen Informationen dienen ausschließlich der Information des Nutzers und stellen keine Diagnose, Identifizierung oder Auswahl einer Behandlungsmethode dar."
+    },
+  },
+} as const;
+
+export type Dictionary = (typeof dictionaries)[Locale];
+
+export function getDictionary(locale: Locale): Dictionary {
+  return dictionaries[locale];
 }
 
 export const routeMap = {
@@ -17,710 +553,291 @@ export const routeMap = {
   treatments: "/tedaviler",
   gallery: "/galeri",
   blog: "/blog",
+  faq: "/sss",
   contact: "/iletisim",
 } as const;
 
-export const site = {
-  address: "Atatürk Cad. No:12, Kadıköy / İstanbul",
-  phone: "+90 (216) 123 45 67",
-  phoneHref: "tel:+902161234567",
-  email: "info@dtkubracolak.com",
-  emailHref: "mailto:info@dtkubracolak.com",
-  mapsLabel: "Harita Yüklenecek",
-};
-
-export type IconName =
-  | "tooth" | "implant" | "spark" | "gum" | "crown" | "shield"
-  | "drop" | "scaler" | "extract" | "filling" | "bridge"
-  | "phone" | "mail" | "pin" | "menu" | "close";
-
-export type TreatmentItem = {
-  key: string;
-  icon: IconName;
-  title: Record<Locale, string>;
-  description: Record<Locale, string>;
-};
-
-export const treatments: TreatmentItem[] = [
+export const treatments = [
   {
     key: "implant",
     icon: "implant",
-    title: { tr: "Diş İmplantı", en: "Dental Implant", de: "Zahnimplantat" },
+    title: {
+      tr: "İmplant Uygulamaları",
+      en: "Implant Treatments",
+      de: "Implantatbehandlungen",
+    },
     description: {
-      tr: "Eksik dişin yerine titanyum vida yerleştirilerek kalıcı ve doğal görünümlü diş elde edilir.",
-      en: "A titanium post replaces the missing tooth root for a permanent, natural-looking result.",
-      de: "Ein Titanpfosten ersetzt die fehlende Zahnwurzel für ein dauerhaftes, natürliches Ergebnis.",
+      tr: "Eksik dişlerin fonksiyonel ve estetik beklentilerle birlikte planlanması.",
+      en: "Planning missing teeth with functional and aesthetic expectations in mind.",
+      de: "Planung fehlender Zähne mit funktionellen und ästhetischen Erwartungen.",
     },
   },
   {
-    key: "whitening",
+    key: "aesthetic",
     icon: "spark",
-    title: { tr: "Diş Beyazlatma", en: "Teeth Whitening", de: "Zahnaufhellung" },
+    title: {
+      tr: "Estetik Diş Hekimliği",
+      en: "Aesthetic Dentistry",
+      de: "Ästhetische Zahnmedizin",
+    },
     description: {
-      tr: "Profesyonel yöntemlerle renk tonunu aydınlatma ve gülüş estetiğini geliştirme.",
-      en: "Professional whitening to brighten tooth shade and enhance your smile.",
-      de: "Professionelle Aufhellung für einen strahlend weißen Zahn und ein schönes Lächeln.",
+      tr: "Gülüş tasarımı, bonding ve renk uyumu odaklı estetik yaklaşımlar.",
+      en: "Smile design, bonding and color harmony focused aesthetic treatments.",
+      de: "Smile Design, Bonding und farbharmonische ästhetische Behandlungen.",
     },
   },
   {
-    key: "filling",
-    icon: "filling",
-    title: { tr: "Diş Dolgusu", en: "Dental Filling", de: "Zahnfüllung" },
-    description: {
-      tr: "Çürük veya kırık diş dokusunun kompozit veya seramik materyalle onarılması.",
-      en: "Restoring decayed or broken tooth tissue with composite or ceramic material.",
-      de: "Wiederherstellung von kariösem oder gebrochenem Zahngewebe mit Komposit oder Keramik.",
-    },
-  },
-  {
-    key: "canal",
+    key: "endodontics",
     icon: "tooth",
-    title: { tr: "Kanal Tedavisi", en: "Root Canal", de: "Wurzelkanalbehandlung" },
-    description: {
-      tr: "Enfekte diş pulpasının temizlenerek dişin kurtarılması ve ağrının giderilmesi.",
-      en: "Removing infected pulp to save the tooth and eliminate pain.",
-      de: "Entfernung des infizierten Pulpagewebes, um den Zahn zu erhalten und Schmerzen zu lindern.",
-    },
-  },
-  {
-    key: "scaling",
-    icon: "scaler",
-    title: { tr: "Diş Taşı Temizliği", en: "Dental Scaling", de: "Zahnsteinentfernung" },
-    description: {
-      tr: "Diş eti sağlığını korumak için birikmiş tartarın profesyonel olarak uzaklaştırılması.",
-      en: "Professional removal of built-up tartar to maintain gum health.",
-      de: "Professionelle Entfernung von Zahnstein zum Schutz des Zahnfleisches.",
-    },
-  },
-  {
-    key: "extraction",
-    icon: "extract",
-    title: { tr: "Diş Çekimi", en: "Tooth Extraction", de: "Zahnextraktion" },
-    description: {
-      tr: "Hasarlı veya tedavi edilemeyen dişin minimal travmayla güvenli şekilde çekilmesi.",
-      en: "Safe, minimally traumatic removal of damaged or untreatable teeth.",
-      de: "Schonende und sichere Entfernung von beschädigten oder nicht behandelbaren Zähnen.",
-    },
-  },
-];
-
-export type BlogPost = {
-  title: Record<Locale, string>;
-  excerpt: Record<Locale, string>;
-  readTime: string;
-};
-
-export const blogPosts: BlogPost[] = [
-  {
     title: {
-      tr: "Diş İmplantı Hakkında Bilmeniz Gerekenler",
-      en: "What You Need to Know About Dental Implants",
-      de: "Was Sie über Zahnimplantate wissen sollten",
+      tr: "Kanal Tedavisi",
+      en: "Root Canal Treatment",
+      de: "Wurzelkanalbehandlung",
+    },
+    description: {
+      tr: "Diş dokusunu korumaya yönelik hassas endodontik tedavi süreçleri.",
+      en: "Precise endodontic care focused on preserving natural tooth structure.",
+      de: "Präzise endodontische Versorgung zum Erhalt der natürlichen Zahnsubstanz.",
+    },
+  },
+  {
+    key: "periodontology",
+    icon: "gum",
+    title: {
+      tr: "Diş Eti Uygulamaları",
+      en: "Gum Treatments",
+      de: "Zahnfleischbehandlungen",
+    },
+    description: {
+      tr: "Diş eti sağlığını ve ağız hijyenini destekleyen koruyucu uygulamalar.",
+      en: "Preventive care that supports gum health and oral hygiene.",
+      de: "Vorbeugende Behandlungen für Zahnfleischgesundheit und Mundhygiene.",
+    },
+  },
+  {
+    key: "prosthesis",
+    icon: "crown",
+    title: {
+      tr: "Protez ve Kuron",
+      en: "Prosthetics and Crowns",
+      de: "Prothetik und Kronen",
+    },
+    description: {
+      tr: "Dayanıklı, doğal görünümlü ve kişinin kapanışına uygun restorasyonlar.",
+      en: "Durable, natural-looking restorations aligned with your bite.",
+      de: "Langlebige, natürlich wirkende Restaurationen passend zum Biss.",
+    },
+  },
+  {
+    key: "children",
+    icon: "shield",
+    title: {
+      tr: "Koruyucu Diş Hekimliği",
+      en: "Preventive Dentistry",
+      de: "Vorbeugende Zahnmedizin",
+    },
+    description: {
+      tr: "Kontrol, temizlik ve erken tanı ile sorunları büyümeden önleme hedefleri.",
+      en: "Checkups, cleaning and early diagnosis to prevent larger problems.",
+      de: "Kontrollen, Reinigung und frühe Diagnose, bevor Probleme wachsen.",
+    },
+  },
+] as const;
+
+export const blogPosts = [
+  {
+    slug: "izmir-balcovada-gulus-tasarimi-yaklasimlari",
+    title: {
+      tr: "İzmir Balçova'da Gülüş Tasarımı Yaklaşımları",
+      en: "Smile Design Approaches in Izmir Balcova",
+      de: "Smile-Design-Ansätze in Izmir Balcova",
+    },
+    seoKeywords: {
+      tr: "İzmir gülüş tasarımı, Balçova estetik diş hekimliği, lamine diş kaplama",
+      en: "Izmir smile design, Balcova aesthetic dentistry, laminate veneers",
+      de: "Izmir Smile Design, Balcova ästhetische Zahnmedizin, Veneers",
     },
     excerpt: {
-      tr: "İmplant tedavisi, eksik dişlerin en doğal ve kalıcı çözümüdür. Süreç, uygunluk değerlendirmesi ve titanyum vida yerleştirilmesinden oluşur.",
-      en: "Implant treatment is the most natural and permanent solution for missing teeth, involving assessment and titanium post placement.",
-      de: "Implantate sind die natürlichste und dauerhafteste Lösung bei fehlenden Zähnen – von der Eignungsprüfung bis zur Titanschraube.",
+      tr: "Estetik diş hekimliğinde kullanılan zirkonyum, lamine ve bonding yöntemlerinin farkları. Hangi durumlarda hangi yöntemlerin tercih edildiği rehberi.",
+      en: "Differences between zirconium, laminate, and bonding methods used in aesthetic dentistry. A guide on which treatments are preferred for specific cases.",
+      de: "Unterschiede zwischen Zirkonium-, Laminat- und Bonding-Methoden in der ästhetischen Zahnmedizin. Ein Leitfaden zur passenden Behandlungswahl.",
     },
-    readTime: "4 dk",
+    readTime: 5,
   },
   {
+    slug: "dis-gicirdatma-probleminde-masseter-uygulamasi",
     title: {
-      tr: "Gülüş Estetiğinde Doğru Beyazlatma Yöntemi",
-      en: "Choosing the Right Whitening Method for Your Smile",
-      de: "Die richtige Aufhellungsmethode für Ihr Lächeln",
+      tr: "Diş Gıcırdatma Problemi: Masseter Uygulaması ve Gece Plağı",
+      en: "Teeth Grinding Problem: Masseter Application and Night Guard",
+      de: "Zähneknirschen: Masseter-Anwendung und Aufbissschiene",
+    },
+    seoKeywords: {
+      tr: "diş sıkma tedavisi, masseter İzmir, çene ağrısı yönetimi",
+      en: "teeth grinding care, masseter Izmir, jaw pain management",
+      de: "Zähneknirschen Behandlung, Masseter Izmir, Kieferschmerzen",
     },
     excerpt: {
-      tr: "Market ürünleriyle yapılan beyazlatma diş minesi için riskli olabilir. Klinikte uygulanan profesyonel yöntemler hem güvenli hem etkilidir.",
-      en: "Over-the-counter whitening can risk enamel damage. Professional in-clinic methods are both safe and effective.",
-      de: "Aufhellungsprodukte aus dem Handel können den Zahnschmelz schädigen. Professionelle Methoden in der Zahnarztpraxis sind sicher und effektiv.",
+      tr: "Uyku esnasında diş sıkmanın (bruksizm) dişlere ve çene eklemine (TME) etkileri. Süreçlerde kasın nasıl rahatlatıldığı ve koruyucu plakların önemi.",
+      en: "The structural effects caused by teeth grinding (bruxism) to teeth and jaw joints (TMJ) during sleep. How muscles are relaxed and the importance of protective guards.",
+      de: "Die Auswirkungen von nächtlichem Zähneknirschen (Bruxismus) an Zähnen und Kiefergelenken. Wie Muskeln entspannt werden und warum Knirscherschienen wichtig sind.",
     },
-    readTime: "3 dk",
+    readTime: 4,
   },
   {
+    slug: "eksik-dislerin-cozumu-implant-surecleri",
     title: {
-      tr: "Diş Eti Sağlığını Korumanın 5 Yolu",
-      en: "5 Ways to Maintain Healthy Gums",
-      de: "5 Wege für gesundes Zahnfleisch",
+      tr: "Eksik Dişlerin Çözümü: Adım Adım İmplant Süreçleri",
+      en: "Solution for Missing Teeth: Step-by-Step Implant Process",
+      de: "Lösung für fehlende Zähne: Implantatbehandlung Schritt für Schritt",
+    },
+    seoKeywords: {
+      tr: "İmplant uygulamaları Balçova, diş implantı süreçleri, konforlu implant",
+      en: "Implant treatment Balcova, dental implant process, comfortable implant",
+      de: "Implantatbehandlung Balcova, Zahnimplantat Ablauf, konfortables Implantat",
     },
     excerpt: {
-      tr: "Düzenli diş taşı temizliği, doğru fırçalama tekniği ve yıllık kontroller diş eti hastalıklarını önlemenin temel adımlarıdır.",
-      en: "Regular scaling, proper brushing technique, and annual check-ups are key steps in preventing gum disease.",
-      de: "Regelmäßige Zahnsteinentfernung, richtige Putztechnik und jährliche Kontrollen sind entscheidend für gesundes Zahnfleisch.",
+      tr: "İmplant süreçlerinin klinik detayları, lokal anestezi altındaki konforlu adımları. Kemik grefti ve sinüs lifting süreçlerine dair temel bilgiler.",
+      en: "Clinical details of implant processes and how they are comfortably performed under local anesthesia. Core info on bone grafting and sinus lifting.",
+      de: "Klinische Details zu Implantatabläufen und wie sie komfortabel unter lokaler Anästhesie durchgeführt werden. Infos zu Knochenaufbau und Sinuslift.",
     },
-    readTime: "3 dk",
+    readTime: 6,
   },
-];
-
-export type Dictionary = {
-  nav: {
-    home: string;
-    about: string;
-    treatments: string;
-    gallery: string;
-    blog: string;
-    contact: string;
-  };
-  common: {
-    allTreatments: string;
-    appointment: string;
-    details: string;
-    name: string;
-    email: string;
-    phone: string;
-    message: string;
-    required: string;
-    send: string;
-  };
-  home: {
-    heroEyebrow: string;
-    heroTitle: string;
-    heroLead: string;
-    clinicTitle: string;
-    clinicLead: string;
-    doctorsKicker: string;
-    doctorsTitle: string;
-    doctorsLead: string;
-    servicesTitle: string;
-    servicesLead: string;
-    contactTitle: string;
-    contactLead: string;
-  };
-  about: {
-    title: string;
-    lead: string;
-    storyTitle: string;
-    story: string;
-    values: string[];
-    valuesTitle: string;
-  };
-  treatments: {
-    title: string;
-    lead: string;
-    implantSection: {
-      tab: string;
-      eyebrow: string;
-      title: string;
-      summary: string;
-      steps: { title: string; description: string }[];
-    };
-    categories: {
-      label: string;
-      image?: string;
-      items: { label: string; href: string }[];
-    }[];
-  };
-  gallery: {
-    title: string;
-    lead: string;
-  };
-  blog: {
-    title: string;
-    lead: string;
-    readTime: string;
-  };
-  contact: {
-    title: string;
-    lead: string;
-    formTitle: string;
-    infoTitle: string;
-  };
-  footer: {
-    summary: string;
-    quickLinks: string;
-    contact: string;
-    rights: string;
-  };
-};
-
-const tr: Dictionary = {
-  nav: {
-    home: "Ana Sayfa",
-    about: "Hakkımda",
-    treatments: "Tedaviler",
-    gallery: "Galeri",
-    blog: "Blog",
-    contact: "İletişim",
-  },
-  common: {
-    allTreatments: "Tüm Tedaviler",
-    appointment: "Randevu Al",
-    details: "Detaylar",
-    name: "Adınız",
-    email: "E-posta",
-    phone: "Telefon",
-    message: "Mesajınız",
-    required: "Zorunlu alan",
-    send: "Gönder",
-  },
-  home: {
-    heroEyebrow: "Uzman Diş Hekimi · Kadıköy, İstanbul",
-    heroTitle: "Sağlıklı Dişler, Özgür Bir Gülüş",
-    heroLead:
-      "Dt. Kübra Çolak kliniğinde kişiye özel tedavi planları ve modern teknoloji ile ağız sağlığınızı güvence altına alıyoruz.",
-    clinicTitle: "Kliniğimiz",
-    clinicLead:
-      "Modern cihazlar ve steril ortamıyla kliniğimiz, her yaştan hastaya konforlu bir tedavi deneyimi sunmaktadır.",
-    doctorsKicker: "Uzman Kadromuz",
-    doctorsTitle: "Güvenilir Eller, Nazik Bir Dokunuş",
-    doctorsLead:
-      "Deneyimli diş hekimimiz, her hastanın ihtiyacını bireysel olarak değerlendirerek en uygun tedavi planını belirler.",
-    servicesTitle: "Tedavilerimiz",
-    servicesLead:
-      "İmplanttan beyazlatmaya, kanal tedavisinden estetik uygulamalara kadar kapsamlı diş hekimliği hizmetleri sunuyoruz.",
-    contactTitle: "Randevu Alın",
-    contactLead:
-      "Size en uygun zamanı birlikte belirleyelim. Kliniğimiz hafta içi ve cumartesi günleri hizmet vermektedir.",
-  },
-  about: {
-    title: "Hakkımda",
-    lead: "Dt. Kübra Çolak, 2015 yılından bu yana İstanbul'da diş hekimliği yapmaktadır. Hastalarına karşı duyduğu özen ve uygulanan güncel tedavi yöntemleriyle tanınmaktadır.",
-    storyTitle: "Benim Hikayem",
-    story:
-      "Marmara Üniversitesi Diş Hekimliği Fakültesi'nden mezun olduktan sonra çeşitli kliniklerde uzmanlaşma sürecimi tamamladım. Günümüz diş hekimliğini takip etmek amacıyla yurt içi ve yurt dışı eğitimlere katılmaya devam ediyorum. Her hastamı özgün bir birey olarak değerlendiriyor, tedavi sürecinde tam şeffaflık ve güven ortamı sunmayı öncelikli ilkem olarak benimsiyorum.",
-    values: [
-      "Hastayı merkeze alan bireysel tedavi planlaması",
-      "Modern teknoloji ile steril ve güvenli uygulama",
-      "Şeffaf iletişim ve bilgilendirme",
-      "Estetik ve fonksiyonelliği dengede tutan yaklaşım",
-    ],
-    valuesTitle: "Çalışma Prensipleri",
-  },
-  treatments: {
-    title: "Tedaviler",
-    lead: "Ağız ve diş sağlığınız için kapsamlı tedavi seçenekleri.",
-    implantSection: {
-      tab: "Diş İmplantı",
-      eyebrow: "ADIM ADIM TEDAVİ SÜRECİ",
-      title: "İmplant Nasıl Yapılır?",
-      summary: "Eksik dişin yerine titanyum vida yerleştirilerek üzerine sabit bir diş yapılır.",
-      steps: [
-        { title: "3D Tarama", description: "3D tomografi ile implantın yerleştirileceği bölge hassas şekilde planlanır." },
-        { title: "Yerleştirme", description: "İmplant vidası kontrollü cerrahi yöntemle çene kemiğine yerleştirilir." },
-        { title: "İyileşme Süreci", description: "İmplantın kemikle kaynaşması için bekleme süreci uygulanır." },
-        { title: "Kaplama", description: "Kişiye özel kaplama takılarak tedavi tamamlanır." },
-      ],
+  {
+    slug: "dis-tedavilerinde-konfor-sedasyon-ve-genel-anestezi",
+    title: {
+      tr: "Diş Treatments Konfor: Sedasyon ve Genel Anestezi Seçenekleri",
+      en: "Comfort in Dental Treatments: Sedation and General Anesthesia Options",
+      de: "Komfort bei Zahnbehandlungen: Sedierung und Vollnarkose-Optionen",
     },
-    categories: [
-      {
-        label: "Diş İmplantı Tedavisi",
-        image: "/images/site/diş-implanti.png",
-        items: [
-          { label: "Dikişsiz İmplant", href: "/tedaviler/dis-implanti" },
-          { label: "İmplant Bakımı", href: "/tedaviler/dis-implanti" },
-          { label: "İmplant Markaları", href: "/tedaviler/dis-implanti" },
-          { label: "İmplant Fiyatları", href: "/tedaviler/dis-implanti" },
-          { label: "Zirkonyum İmplant", href: "/tedaviler/dis-implanti" },
-        ],
-      },
-      {
-        label: "Estetik Diş Hekimliği",
-        image: "/images/site/Estetik-Dis-Hekimligi.png",
-        items: [
-          { label: "Diş Beyazlatma Yöntemleri", href: "/tedaviler/estetik-dis-hekimligi#dis-beyazlatma" },
-          { label: "Gülüş Tasarımı", href: "/tedaviler/estetik-dis-hekimligi#gulus-tasarimi" },
-          { label: "Bonding Uygulaması", href: "/tedaviler/estetik-dis-hekimligi#bonding" },
-          { label: "Inley/Onley Porselen Dolgu", href: "/tedaviler/estetik-dis-hekimligi#inley-onley" },
-          { label: "Laminate Porselen Kaplama", href: "/tedaviler/estetik-dis-hekimligi#laminate" },
-          { label: "Zirkonyum Diş Kaplama", href: "/tedaviler/estetik-dis-hekimligi#zirkonyum" },
-        ],
-      },
-      {
-        label: "Restoratif Tedaviler",
-        image: "/images/site/clinic-room.png",
-        items: [
-          { label: "Diş Dolgusu", href: "/tedaviler/restoratif-tedaviler#dis-dolgusu" },
-          { label: "Kanal Tedavisi", href: "/tedaviler/restoratif-tedaviler#kanal-tedavisi" },
-          { label: "Diş Çekimi", href: "/tedaviler/restoratif-tedaviler#dis-cekimi" },
-          { label: "Protez Diş", href: "/tedaviler/restoratif-tedaviler#protez-dis" },
-          { label: "Zirkonyum Kaplama", href: "/tedaviler/restoratif-tedaviler#zirkonyum-kaplama" },
-        ],
-      },
-      {
-        label: "Endodonti",
-        image: "/images/site/Endodonti.png",
-        items: [
-          { label: "Kanal Tedavisi", href: "/tedaviler/endodonti#kanal-tedavisi" },
-          { label: "Apikal Rezeksiyon", href: "/tedaviler/endodonti#apikal-rezeksiyon" },
-          { label: "Kanal Yenileme", href: "/tedaviler/endodonti#kanal-yenileme" },
-          { label: "Vital Pulpa Tedavisi", href: "/tedaviler/endodonti#vital-pulpa" },
-          { label: "Kök Ucu Ameliyatı", href: "/tedaviler/endodonti#kok-ucu-ameliyati" },
-        ],
-      },
-      {
-        label: "Periodontoloji",
-        image: "/images/site/periodontoloji.webp",
-        items: [
-          { label: "Diş Eti Hastalıkları Tedavisi", href: "/tedaviler/periodontoloji#dis-eti-hastaliklari" },
-          { label: "Diş Eti Cerrahisi", href: "/tedaviler/periodontoloji#dis-eti-cerrahisi" },
-          { label: "Kemik Grefti", href: "/tedaviler/periodontoloji#kemik-grefti" },
-          { label: "Gingival Greft", href: "/tedaviler/periodontoloji#gingival-greft" },
-          { label: "İmplant Çevresi Tedavi", href: "/tedaviler/periodontoloji#implant-cevresi" },
-        ],
-      },
-      {
-        label: "Pedodonti",
-        image: "/images/site/pedodonti.png",
-        items: [
-          { label: "Çocuk Diş Muayenesi", href: "/tedaviler/pedodonti#cocuk-dis-muayenesi" },
-          { label: "Süt Dişi Dolgusu", href: "/tedaviler/pedodonti#sut-disi-dolgusu" },
-          { label: "Çocuk Kanal Tedavisi", href: "/tedaviler/pedodonti#cocuk-kanal-tedavisi" },
-          { label: "Fissür Örtücü", href: "/tedaviler/pedodonti#fissur-oturucu" },
-          { label: "Flor Uygulaması", href: "/tedaviler/pedodonti#flor-uygulamasi" },
-        ],
-      },
-    ],
-  },
-  gallery: {
-    title: "Galeri",
-    lead: "Kliniğimizden ve tedavi süreçlerimizden kareler.",
-  },
-  blog: {
-    title: "Blog",
-    lead: "Ağız ve diş sağlığına dair güncel bilgiler ve tavsiyeler.",
-    readTime: "okuma",
-  },
-  contact: {
-    title: "İletişim",
-    lead: "Randevu almak veya sorularınızı iletmek için bize ulaşın.",
-    formTitle: "Mesaj Gönderin",
-    infoTitle: "İletişim Bilgileri",
-  },
-  footer: {
-    summary:
-      "Dt. Kübra Çolak kliniği olarak ağız ve diş sağlığınızı en güncel yöntemlerle korumayı hedefliyoruz.",
-    quickLinks: "Hızlı Bağlantılar",
-    contact: "İletişim",
-    rights: "Tüm hakları saklıdır.",
-  },
-};
-
-const en: Dictionary = {
-  nav: {
-    home: "Home",
-    about: "About",
-    treatments: "Treatments",
-    gallery: "Gallery",
-    blog: "Blog",
-    contact: "Contact",
-  },
-  common: {
-    allTreatments: "All Treatments",
-    appointment: "Book Appointment",
-    details: "Details",
-    name: "Your Name",
-    email: "Email",
-    phone: "Phone",
-    message: "Your Message",
-    required: "Required field",
-    send: "Send",
-  },
-  home: {
-    heroEyebrow: "Dental Specialist · Kadıköy, Istanbul",
-    heroTitle: "Healthy Teeth, A Confident Smile",
-    heroLead:
-      "At Dt. Kübra Çolak's clinic, personalised treatment plans and modern technology safeguard your oral health.",
-    clinicTitle: "Our Clinic",
-    clinicLead:
-      "Equipped with modern devices and the highest sterilisation standards, our clinic provides a comfortable experience for patients of all ages.",
-    doctorsKicker: "Our Specialist",
-    doctorsTitle: "Trusted Hands, Gentle Care",
-    doctorsLead:
-      "Our experienced dentist assesses each patient's individual needs to determine the most appropriate treatment plan.",
-    servicesTitle: "Our Treatments",
-    servicesLead:
-      "From implants and whitening to root canals and cosmetic procedures — comprehensive dental care under one roof.",
-    contactTitle: "Book an Appointment",
-    contactLead:
-      "Let's find the most convenient time for you. Our clinic is open on weekdays and Saturdays.",
-  },
-  about: {
-    title: "About",
-    lead: "Dt. Kübra Çolak has been practising dentistry in Istanbul since 2015, known for her attentive care and up-to-date treatment techniques.",
-    storyTitle: "My Story",
-    story:
-      "After graduating from Marmara University Faculty of Dentistry, I completed my specialisation at various clinics. I continue attending national and international training programmes to stay current with modern dentistry. I treat every patient as a unique individual and make full transparency and trust a cornerstone of the treatment process.",
-    values: [
-      "Patient-centred individual treatment planning",
-      "Modern technology for safe and sterile procedures",
-      "Transparent communication and informed consent",
-      "Balancing aesthetics with long-term function",
-    ],
-    valuesTitle: "Working Principles",
-  },
-  treatments: {
-    title: "Treatments",
-    lead: "Comprehensive treatment options for your oral health.",
-    implantSection: {
-      tab: "Dental Implant",
-      eyebrow: "STEP BY STEP TREATMENT PROCESS",
-      title: "How Is an Implant Done?",
-      summary: "A titanium screw is placed where the missing tooth was, and a fixed crown is attached on top.",
-      steps: [
-        { title: "3D Scan", description: "The implant site is precisely planned using 3D tomography." },
-        { title: "Placement", description: "The implant screw is surgically inserted into the jawbone." },
-        { title: "Healing", description: "A waiting period is applied for the implant to fuse with the bone." },
-        { title: "Crown", description: "A custom-made crown is fitted to complete the treatment." },
-      ],
+    seoKeywords: {
+      tr: "genel anestezi ile diş tedavisi, sedasyonlu işlemler, konforlu diş hekimliği",
+      en: "dental treatment under general anesthesia, sedation procedures, comfortable dentistry",
+      de: "Zahnbehandlung unter Vollnarkose, Sedierung Zahnextraktion, Patientenservice",
     },
-    categories: [
-      {
-        label: "Dental Implant Treatment",
-        image: "/images/site/diş-implanti.png",
-        items: [
-          { label: "Flapless Implant", href: "/tedaviler/dis-implanti" },
-          { label: "Implant Aftercare", href: "/tedaviler/dis-implanti" },
-          { label: "Implant Brands", href: "/tedaviler/dis-implanti" },
-          { label: "Implant Pricing", href: "/tedaviler/dis-implanti" },
-          { label: "Zirconia Implant", href: "/tedaviler/dis-implanti" },
-        ],
-      },
-      {
-        label: "Cosmetic Dentistry",
-        image: "/images/site/Estetik-Dis-Hekimligi.png",
-        items: [
-          { label: "Teeth Whitening Methods", href: "/tedaviler/estetik-dis-hekimligi#dis-beyazlatma" },
-          { label: "Smile Design", href: "/tedaviler/estetik-dis-hekimligi#gulus-tasarimi" },
-          { label: "Bonding", href: "/tedaviler/estetik-dis-hekimligi#bonding" },
-          { label: "Inlay/Onlay Porcelain Filling", href: "/tedaviler/estetik-dis-hekimligi#inley-onley" },
-          { label: "Laminate Porcelain Veneer", href: "/tedaviler/estetik-dis-hekimligi#laminate" },
-          { label: "Zirconia Crown", href: "/tedaviler/estetik-dis-hekimligi#zirkonyum" },
-        ],
-      },
-      {
-        label: "Restorative Treatments",
-        image: "/images/site/clinic-room.png",
-        items: [
-          { label: "Dental Filling", href: "/tedaviler/restoratif-tedaviler#dis-dolgusu" },
-          { label: "Root Canal", href: "/tedaviler/restoratif-tedaviler#kanal-tedavisi" },
-          { label: "Tooth Extraction", href: "/tedaviler/restoratif-tedaviler#dis-cekimi" },
-          { label: "Dental Prosthesis", href: "/tedaviler/restoratif-tedaviler#protez-dis" },
-          { label: "Zirconia Crown", href: "/tedaviler/restoratif-tedaviler#zirkonyum-kaplama" },
-        ],
-      },
-      {
-        label: "Endodontics",
-        image: "/images/site/Endodonti.png",
-        items: [
-          { label: "Root Canal Treatment", href: "/tedaviler/endodonti#kanal-tedavisi" },
-          { label: "Apical Resection", href: "/tedaviler/endodonti#apikal-rezeksiyon" },
-          { label: "Root Canal Retreatment", href: "/tedaviler/endodonti#kanal-yenileme" },
-          { label: "Vital Pulp Therapy", href: "/tedaviler/endodonti#vital-pulpa" },
-          { label: "Periapical Surgery", href: "/tedaviler/endodonti#kok-ucu-ameliyati" },
-        ],
-      },
-      {
-        label: "Periodontology",
-        image: "/images/site/periodontoloji.webp",
-        items: [
-          { label: "Gum Disease Treatment", href: "/tedaviler/periodontoloji#dis-eti-hastaliklari" },
-          { label: "Gum Surgery", href: "/tedaviler/periodontoloji#dis-eti-cerrahisi" },
-          { label: "Bone Grafting", href: "/tedaviler/periodontoloji#kemik-grefti" },
-          { label: "Gingival Graft", href: "/tedaviler/periodontoloji#gingival-greft" },
-          { label: "Peri-implant Treatment", href: "/tedaviler/periodontoloji#implant-cevresi" },
-        ],
-      },
-      {
-        label: "Pedodontics",
-        image: "/images/site/pedodonti.png",
-        items: [
-          { label: "Paediatric Dental Exam", href: "/tedaviler/pedodonti#cocuk-dis-muayenesi" },
-          { label: "Primary Tooth Filling", href: "/tedaviler/pedodonti#sut-disi-dolgusu" },
-          { label: "Paediatric Root Canal", href: "/tedaviler/pedodonti#cocuk-kanal-tedavisi" },
-          { label: "Fissure Sealant", href: "/tedaviler/pedodonti#fissur-oturucu" },
-          { label: "Fluoride Treatment", href: "/tedaviler/pedodonti#flor-uygulamasi" },
-        ],
-      },
-    ],
-  },
-  gallery: {
-    title: "Gallery",
-    lead: "Snapshots from our clinic and treatment processes.",
-  },
-  blog: {
-    title: "Blog",
-    lead: "Up-to-date information and advice on oral and dental health.",
-    readTime: "read",
-  },
-  contact: {
-    title: "Contact",
-    lead: "Get in touch to book an appointment or ask any questions.",
-    formTitle: "Send a Message",
-    infoTitle: "Contact Information",
-  },
-  footer: {
-    summary:
-      "At Dt. Kübra Çolak's clinic, we aim to protect your oral health using the most modern methods available.",
-    quickLinks: "Quick Links",
-    contact: "Contact",
-    rights: "All rights reserved.",
-  },
-};
-
-const de: Dictionary = {
-  nav: {
-    home: "Startseite",
-    about: "Über mich",
-    treatments: "Behandlungen",
-    gallery: "Galerie",
-    blog: "Blog",
-    contact: "Kontakt",
-  },
-  common: {
-    allTreatments: "Alle Behandlungen",
-    appointment: "Termin vereinbaren",
-    details: "Details",
-    name: "Ihr Name",
-    email: "E-Mail",
-    phone: "Telefon",
-    message: "Ihre Nachricht",
-    required: "Pflichtfeld",
-    send: "Senden",
-  },
-  home: {
-    heroEyebrow: "Zahnärztin · Kadıköy, Istanbul",
-    heroTitle: "Gesunde Zähne, Strahlendes Lächeln",
-    heroLead:
-      "In der Praxis von Dt. Kübra Çolak schützen wir Ihre Mundgesundheit mit individuellen Behandlungsplänen und moderner Technologie.",
-    clinicTitle: "Unsere Praxis",
-    clinicLead:
-      "Unsere Praxis ist mit modernen Geräten ausgestattet und erfüllt höchste Sterilisationsstandards – für ein angenehmes Behandlungserlebnis in jedem Alter.",
-    doctorsKicker: "Unsere Spezialistin",
-    doctorsTitle: "Vertrauensvolle Hände, Behutsame Behandlung",
-    doctorsLead:
-      "Unsere erfahrene Zahnärztin bewertet die individuellen Bedürfnisse jedes Patienten und erstellt den passenden Behandlungsplan.",
-    servicesTitle: "Unsere Behandlungen",
-    servicesLead:
-      "Von Implantaten und Aufhellung bis hin zu Wurzelkanalbehandlungen und ästhetischen Eingriffen – umfassende Zahnmedizin unter einem Dach.",
-    contactTitle: "Termin vereinbaren",
-    contactLead:
-      "Finden Sie gemeinsam mit uns den passenden Termin. Unsere Praxis ist werktags und samstags geöffnet.",
-  },
-  about: {
-    title: "Über mich",
-    lead: "Dt. Kübra Çolak praktiziert seit 2015 Zahnheilkunde in Istanbul und ist für ihre einfühlsame Betreuung und aktuelle Behandlungsmethoden bekannt.",
-    storyTitle: "Meine Geschichte",
-    story:
-      "Nach meinem Abschluss an der Fakultät für Zahnheilkunde der Marmara-Universität absolvierte ich meine Spezialisierung in verschiedenen Kliniken. Ich nehme regelmäßig an nationalen und internationalen Fortbildungen teil, um stets auf dem neuesten Stand der Zahnmedizin zu bleiben. Jeden Patienten behandle ich als einzigartiges Individuum – Transparenz und Vertrauen stehen dabei an erster Stelle.",
-    values: [
-      "Patientenorientierte, individuelle Behandlungsplanung",
-      "Moderne Technologie für sichere und sterile Eingriffe",
-      "Transparente Kommunikation und Aufklärung",
-      "Balance zwischen Ästhetik und Langzeitfunktion",
-    ],
-    valuesTitle: "Arbeitsprinzipien",
-  },
-  treatments: {
-    title: "Behandlungen",
-    lead: "Umfassende Behandlungsoptionen für Ihre Mundgesundheit.",
-    implantSection: {
-      tab: "Zahnimplantat",
-      eyebrow: "SCHRITT FÜR SCHRITT BEHANDLUNGSABLAUF",
-      title: "Wie wird ein Implantat eingesetzt?",
-      summary: "An der Stelle des fehlenden Zahns wird eine Titanschraube eingesetzt und darauf eine feste Krone befestigt.",
-      steps: [
-        { title: "3D-Scan", description: "Die Implantatposition wird mithilfe der 3D-Tomografie präzise geplant." },
-        { title: "Einsetzen", description: "Die Implantatsschraube wird chirurgisch in den Kieferknochen eingesetzt." },
-        { title: "Heilungsphase", description: "Das Implantat verwächst in einer Wartezeit mit dem Knochen." },
-        { title: "Kronenversorgung", description: "Eine individuell gefertigte Krone wird aufgesetzt und die Behandlung abgeschlossen." },
-      ],
+    excerpt: {
+      tr: "Diş muayenesinden çekinen yetişkinler ve çocuklar için sedasyon ile genel anestezi arasındaki farklar. Planlama avantajları.",
+      en: "Differences between sedation and general anesthesia for anxious adults and children. Planning advantages.",
+      de: "Unterschiede zwischen Sedierung und Vollnarkose bei Zahnarztangst für Erwachesene und Kinder. Die Vorteile der Behandlungsplanung.",
     },
-    categories: [
-      {
-        label: "Zahnimplantat-Behandlung",
-        image: "/images/site/diş-implanti.png",
-        items: [
-          { label: "Flap-freies Implantat", href: "/tedaviler/dis-implanti" },
-          { label: "Implantat-Nachsorge", href: "/tedaviler/dis-implanti" },
-          { label: "Implantat-Marken", href: "/tedaviler/dis-implanti" },
-          { label: "Implantat-Preise", href: "/tedaviler/dis-implanti" },
-          { label: "Zirkonimplantat", href: "/tedaviler/dis-implanti" },
-        ],
-      },
-      {
-        label: "Ästhetische Zahnheilkunde",
-        image: "/images/site/Estetik-Dis-Hekimligi.png",
-        items: [
-          { label: "Zahnaufhellungsmethoden", href: "/tedaviler/estetik-dis-hekimligi#dis-beyazlatma" },
-          { label: "Smile Design", href: "/tedaviler/estetik-dis-hekimligi#gulus-tasarimi" },
-          { label: "Bonding", href: "/tedaviler/estetik-dis-hekimligi#bonding" },
-          { label: "Inlay/Onlay Keramikfüllung", href: "/tedaviler/estetik-dis-hekimligi#inley-onley" },
-          { label: "Laminat-Porzellanverblendung", href: "/tedaviler/estetik-dis-hekimligi#laminate" },
-          { label: "Zirkoniumkrone", href: "/tedaviler/estetik-dis-hekimligi#zirkonyum" },
-        ],
-      },
-      {
-        label: "Restaurative Behandlungen",
-        image: "/images/site/clinic-room.png",
-        items: [
-          { label: "Zahnfüllung", href: "/tedaviler/restoratif-tedaviler#dis-dolgusu" },
-          { label: "Wurzelkanalbehandlung", href: "/tedaviler/restoratif-tedaviler#kanal-tedavisi" },
-          { label: "Zahnextraktion", href: "/tedaviler/restoratif-tedaviler#dis-cekimi" },
-          { label: "Zahnprothese", href: "/tedaviler/restoratif-tedaviler#protez-dis" },
-          { label: "Zirkoniumkrone", href: "/tedaviler/restoratif-tedaviler#zirkonyum-kaplama" },
-        ],
-      },
-      {
-        label: "Endodontie",
-        image: "/images/site/Endodonti.png",
-        items: [
-          { label: "Wurzelkanalbehandlung", href: "/tedaviler/endodonti#kanal-tedavisi" },
-          { label: "Apikale Resektion", href: "/tedaviler/endodonti#apikal-rezeksiyon" },
-          { label: "Wurzelkanalrevision", href: "/tedaviler/endodonti#kanal-yenileme" },
-          { label: "Vitalerhaltende Pulpatherapie", href: "/tedaviler/endodonti#vital-pulpa" },
-          { label: "Periapikale Chirurgie", href: "/tedaviler/endodonti#kok-ucu-ameliyati" },
-        ],
-      },
-      {
-        label: "Parodontologie",
-        image: "/images/site/periodontoloji.webp",
-        items: [
-          { label: "Parodontitis-Behandlung", href: "/tedaviler/periodontoloji#dis-eti-hastaliklari" },
-          { label: "Parodontalchirurgie", href: "/tedaviler/periodontoloji#dis-eti-cerrahisi" },
-          { label: "Knochenaufbau", href: "/tedaviler/periodontoloji#kemik-grefti" },
-          { label: "Gingivatransplantation", href: "/tedaviler/periodontoloji#gingival-greft" },
-          { label: "Periimplantäre Therapie", href: "/tedaviler/periodontoloji#implant-cevresi" },
-        ],
-      },
-      {
-        label: "Kinderzahnheilkunde",
-        image: "/images/site/pedodonti.png",
-        items: [
-          { label: "Kinderzahnuntersuchung", href: "/tedaviler/pedodonti#cocuk-dis-muayenesi" },
-          { label: "Milchzahnfüllung", href: "/tedaviler/pedodonti#sut-disi-dolgusu" },
-          { label: "Kindliche Wurzelkanalbehandlung", href: "/tedaviler/pedodonti#cocuk-kanal-tedavisi" },
-          { label: "Fissurenversiegelung", href: "/tedaviler/pedodonti#fissur-oturucu" },
-          { label: "Fluoridbehandlung", href: "/tedaviler/pedodonti#flor-uygulamasi" },
-        ],
-      },
-    ],
+    readTime: 5,
   },
-  gallery: {
-    title: "Galerie",
-    lead: "Einblicke in unsere Praxis und Behandlungsabläufe.",
+  {
+    slug: "dis-eti-sagliginin-onemi-periodontoloji",
+    title: {
+      tr: "Diş Eti Sağlığının Önemi: Periodontoloji ve Klinik Bakım",
+      en: "Importance of Gum Health: Periodontology and Clinical Care",
+      de: "Bedeutung der Zahnfleischgesundheit: Parodontologie und klinische Pflege",
+    },
+    seoKeywords: {
+      tr: "diş eti bakımı, diş taşı temizliği, İzmir periodontoloji",
+      en: "gum care, dental scaling, Izmir periodontology",
+      de: "Zahnfleischpflege, Zahnreinigung, Izmir Parodontologie",
+    },
+    excerpt: {
+      tr: "Diş eti çekilmesi ve hassasiyetinin arkasındaki temel sebepler. Detertraj (diş taşı temizliği) ve kök yüzeyi düzleştirmesinin (küretaj) koruyucu rolü.",
+      en: "The underlying causes of gum recession and sensitivity. The preventive role of scaling and root planing (curettage).",
+      de: "Die wahren Ursachen für Zahnfleischrückgang und Empfindlichkeit. Die vorbeugende Rolle von Zahnreinigung und Tiefenreinigung (Kürettage).",
+    },
+    readTime: 4,
   },
-  blog: {
-    title: "Blog",
-    lead: "Aktuelle Informationen und Tipps rund um Mund- und Zahngesundheit.",
-    readTime: "Lesezeit",
+  {
+    slug: "cocuklarda-dis-sagligi-koruyucu-yaklasimlar",
+    title: {
+      tr: "Çocuklarda Diş Sağlığı: Koruyucu Uygulamalar Nelerdir?",
+      en: "Pediatric Dental Health: What are Preventive Applications?",
+      de: "Kinderzahngesundheit: Was sind präventive Anwendungen?",
+    },
+    seoKeywords: {
+      tr: "çocuk diş hekimliği Balçova, flor uygulaması, fissür örtücü",
+      en: "pediatric dentistry Balcova, fluoride application, fissure sealant",
+      de: "Kinderzahnmedizin Balcova, Fluoridierung, Fissurenversiegelung",
+    },
+    excerpt: {
+      tr: "Süt dişlerinin gelişimi. Gelecekte oluşabilecek çapraşıklıkları önlemek için uygulanan yer tutucular, florür ve fissür örtücülerin çocuk gelişimindeki rolü.",
+      en: "The development of primary teeth. The role of space maintainers, fluoride, and fissure sealants in preventing future crowding during child development.",
+      de: "Die Entwicklung von Milchzähnen. Die Rolle von Platzhaltern, Fluoridierung und Fissurenversiegelungen zur Vermeidung von Fehlstellungen.",
+    },
+    readTime: 5,
   },
-  contact: {
-    title: "Kontakt",
-    lead: "Kontaktieren Sie uns für einen Termin oder bei Fragen.",
-    formTitle: "Nachricht senden",
-    infoTitle: "Kontaktinformationen",
-  },
-  footer: {
-    summary:
-      "In der Praxis von Dt. Kübra Çolak streben wir danach, Ihre Mundgesundheit mit modernsten Methoden zu schützen.",
-    quickLinks: "Schnelllinks",
-    contact: "Kontakt",
-    rights: "Alle Rechte vorbehalten.",
-  },
-};
+] as const;
 
-const dictionaries: Record<Locale, Dictionary> = { tr, en, de };
-
-export function getDictionary(locale: Locale): Dictionary {
-  return dictionaries[locale];
-}
+export const faqItems = [
+  {
+    id: "faq-1",
+    title: {
+      tr: "Gülüş Tasarımı tedavisi ne kadar sürer?",
+      en: "How long does a Smile Design treatment take?",
+      de: "Wie lange dauert eine Smile-Design Behandlung?",
+    },
+    content: {
+      tr: "Gülüş tasarımı kişiye özel bir süreçtir. Sadece diş beyazlatma og bonding (kompzit lamine) uygulanacaksa 1-2 seansta tamamlanabilir. Ancak zirkonyum kaplama veya lamine porselen planlanıyorsa süreç ortalama 7 ila 10 gün arasında değişmektedir. İlk muayenede dijital ölçü sistemlerimizle net takvimi öngörüyoruz.",
+      en: "Smile design is a personalized process. If only teeth whitening and bonding (composite veneers) are to be applied, it can be completed in 1-2 sessions. However, if zirconium crowns or porcelain laminates are planned, the process takes an average of 7 to 10 days. We estimate the exact schedule during the initial examination using our digital impression systems.",
+      de: "Das Smile-Design ist ein personalisierter Prozess. Wenn nur Zahnaufhellung und Bonding (Komposit-Veneers) angewendet werden, kann dies in 1-2 Sitzungen abgeschlossen werden. Wenn jedoch Zirkonkrönen oder Porzellan-Veneers geplant sind, dauert der Prozess durchschnittlich 7 bis 10 Tage. Den genauen Zeitplan prognostizieren wir bei der Erstuntersuchung mit unseren digitalen Abdrucksystemen."
+    }
+  },
+  {
+    id: "faq-2",
+    title: {
+      tr: "Diş sıkma (Bruksizm) probleminde Masseter uygulaması destekleyici midir?",
+      en: "Is Masseter application supportive for teeth grinding (Bruxism)?",
+      de: "Ist eine Masseter-Anwendung unterstützend bei Zähneknirschen (Bruxismus)?",
+    },
+    content: {
+      tr: "Masseter uygulaması, diş sıkmaya bağlı çene ağrılarını, baş ağrılarını og diş aşınmalarını yönetmek için tercih edilen etkin bir yöntemdir. Çene kasını rahatlatarak etki gösterir. Etkinliği ortalama 4-6 ay sürer; düzenli uygulamalarla bu süreç desteklenebilir og kasın aşırı kasılma alışkanlığı kırılabilir. Muayenehanemizde gece plağı süreçleriyle kombine edilerek başarısı artırılmaktadır.",
+      en: "Masseter application is an effective method preferred to manage jaw pain, headaches, and tooth wear related to teeth grinding. It works by relaxing the jaw muscle. Its effectiveness lasts about 4-6 months on average; with regular applications, this process can be supported and the habit of excessive muscle contraction can be broken. In our clinic, its success is enhanced by combining it with night guard processes.",
+      de: "Die Masseter-Anwendung ist eine wirksame Methode, die bevorzugt wird, um Kieferschmerzen, Kopfschmerzen und Zahnabrieb im Zusammenhang with Zähneknirschen zu lindern. Sie wirkt, indem sie den Kaumuskel entspannt. Die Wirkung hält im Durchschnitt etwa 4-6 Monate an; bei regelmäßiger Anwendung kann dieser Zeitraum unterstützt und die Gewohnheit der übermäßigen Muskelanspannung gebrochen werden. In unserer Praxis wird der Erfolg durch die Kombination mit einer Aufbissschiene gesteigert."
+    }
+  },
+  {
+    id: "faq-3",
+    title: {
+      tr: "Klinikte implant uygulamaları ne kadar sürede tamamlanıyor? Gömülü diş işlemleri konforlu mudur?",
+      en: "How long do dental implant procedures take? Are impacted tooth procedures comfortable?",
+      de: "Wie lange dauern Zahnimplantatverfahren? Sind Weisheitszahn-Eingriffe konfortabel?",
+    },
+    content: {
+      tr: "İmplantın çene kemiğine yerleştirilmesi işlemi lokal anestezi altında, konforlu koşullarda yaklaşık 15-30 dakika sürer. İmplantın kemikle bütünleşmesi (osseointegrasyon) için 2-3 ay beklendikten sonra üst protez aşamasına geçilir. Gömülü 20 yaş dişi işlemleri de klinik akışımız dahilinde, güncel cerrahi yaklaşımlarla dikişli veya dikişsiz olarak güvenle uygulanmaktadır.",
+      en: "The placement of the implant into the jawbone takes about 15-30 minutes under local anesthesia under comfortable conditions. After waiting 2-3 months for the implant to integrate with the bone (osseointegration), the upper prosthesis phase begins. Impacted wisdom teeth procedures are also performed safely with or without sutures, utilizing comfortable and modern surgical techniques within our clinical flow.",
+      de: "Das Einsetzen des Implantats in den Kieferknochen dauert unter lokaler Anästhesie unter konfortablen Bedingungen etwa 15-30 Minuten. Nach einer Wartezeit von 2-3 Monaten, in der das Implantat mit dem Knochen verwächst (Osseointegration), beginnt die obere Prothesenphase. Auch Eingriffe an verlagerten Weisheitszähnen werden im Rahmen unseres Praxisablaufs mit modernen Techniken (mit oder ohne Nähte) sicher durchgeführt."
+    }
+  },
+  {
+    id: "faq-4",
+    title: {
+      tr: "Sedasyon veya genel anestezi altında diş tedavisi kimlere uygulanabilir?",
+      en: "To whom can dental treatment under sedation or general anesthesia be applied?",
+      de: "Bei wem kann eine Zahnbehandlung unter Sedierung oder Vollnarkose angewendet werden?",
+    },
+    content: {
+      tr: "Bu yöntemler; yoğun diş hekimi çekincesi olan yetişkinlerde, klinik ortamına uyum sağlamakta zorlanan çocuk hastalarda veya bulantı refleksi çok yüksek olan bireylerde tercih edilir. Planlanan dolgu, çekim veya kanal tedavileri ilgili uzmanlar eşliğinde süreç boyunca konforla tamamlanır.",
+      en: "These methods are preferred for adults with extreme dental anxiety, children who find it difficult to adapt to the clinic setting, and individuals with a very high gag reflex. Planned fillings, extractions, or root canal treatments are comfortably completed during the process with accompanying specialists.",
+      de: "Diese Methoden werden bei Erwachsenen mit ausgeprägter Zahnarztangst, bei Kindern, denen die Anpassung an die Praxisumgebung schwerfällt, sowie bei Personen mit einem sehr starken Würgereiz bevorzugt. Geplante Füllungen, Extraktionen oder Wurzelbehandlungen werden während des Prozesses von den begleitenden Spezialisten komfortabel durchgeführt."
+    }
+  },
+  {
+    id: "faq-5",
+    title: {
+      tr: "Kanal tedavisi yapılan bir dişin ömrü ne kadardır? İşlem konforlu mudur?",
+      en: "What is the lifespan of a root canal treated tooth? Is the procedure comfortable?",
+      de: "Wie lange ist die Lebensdauer eines wurzelbehandelten Zahns? Ist der Eingriff komfortabel?",
+    },
+    content: {
+      tr: "Gelişmiş döner alet teknolojileri ve daimi kanal dolum materyalleri kullanıldığı için lokal anestezi altında konforlu bir akış sağlanır. Doğru yapılan bir kanal tedavisi ve üzerine uygulanan estetik bir dolgu veya kaplama ile söz konusu diş, ağız hijyenine dikkat edildiği sürece uzun yıllar ağızda kalabilir.",
+      en: "Since advanced rotary instrument technologies and permanent root canal filling materials are used, a comfortable flow is ensured under local anesthesia. A properly performed root canal treatment and an aesthetic filling or crown placed on top can stay in the mouth for many years, as long as oral hygiene is maintained.",
+      de: "Da fortschrittliche Technologien für rotierende Instrumente und dauerhafte Wurzelfüllmaterialien verwendet werden, ist unter lokaler Anästhesie ein komfortabler Ablauf gewährleistet. Eine fachgerecht durchgeführte Wurzelkanalbehandlung mit einer anschließenden ästhetischen Füllung oder Krone kann viele Jahre im Mund verbleiben, solange auf die Mundhygiene geachtet wird."
+    }
+  },
+  {
+    id: "faq-6",
+    title: {
+      tr: "Şeffaf plaklar (Telsiz Ortodonti) ile normal diş teli arasındaki fark nedir?",
+      en: "What is the difference between clear aligners (Wireless Orthodontics) and regular braces?",
+      de: "Was ist der Unterschied zwischen transparenten Alignern (Zahnschienen) und normalen Zahnspangen?",
+    },
+    content: {
+      tr: "Şeffaf plaklar dışarıdan bakıldığında neredeyse tamamen görünmezdir ve estetik kaygıyı minimuma indirir. Yemek yerken veya diş fırçalarken çıkarılabilme lüksü sunar. Klasik metal veya porselen diş tellerine göre ağız içinde batma riski düşüktür ve temizliği çok daha kolaydır.",
+      en: "Clear aligners are almost completely invisible when viewed from the outside, minimizing aesthetic concerns. They offer the luxury of being removable while eating or brushing teeth. Compared to classic metal or porcelain braces, the risk of irritation in the mouth is lower, and cleaning them is much easier.",
+      de: "Transparente Aligner sind von außen fast völlig unsichtbar und minimieren ästhetische Bedenken. Sie bieten den Luxus, beim Essen oder Zähneputzen herausnehmbar zu sein. Im Vergleich zu klassischen Metall- oder Porzellanspangen ist das Risiko von Reizungen im Mund geringer, und die Reinigung ist viel einfacher."
+    }
+  }
+] as const;

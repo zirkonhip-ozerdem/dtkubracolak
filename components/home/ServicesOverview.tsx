@@ -11,7 +11,7 @@ type ServicesOverviewProps = {
 
 export function ServicesOverview({ lang, dictionary }: ServicesOverviewProps) {
   return (
-    <section className="relative overflow-hidden bg-[#f7f4ef] px-6 py-20 lg:px-8" style={{ position: 'relative' }}>
+    <section className="relative overflow-hidden bg-[#f7f4ef] px-6 py-20 lg:px-8">
       <Image
         src="/images/site/clinic-room.png"
         alt=""

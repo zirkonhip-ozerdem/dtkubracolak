@@ -9,7 +9,7 @@ type ContactPageProps = {
 export function ContactPage({ dictionary }: ContactPageProps) {
   return (
     <>
-      <PageHero title={dictionary.contact.title} lead={dictionary.contact.lead} image="/images/site/header.png" />
+      <PageHero title={dictionary.contact.title} lead={dictionary.contact.lead} image="/images/site/smile-consultation.png" />
       <section className="bg-white px-6 py-20 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <aside className="bg-[#252525] p-8 text-white">

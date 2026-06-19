@@ -10,7 +10,7 @@ type ContactPreviewProps = {
 
 export function ContactPreview({ lang, dictionary }: ContactPreviewProps) {
   return (
-    <section className="relative overflow-hidden bg-[#252525] px-6 py-20 text-white lg:px-8" style={{ position: 'relative' }}>
+    <section className="relative overflow-hidden bg-[#252525] px-6 py-20 text-white lg:px-8">
       <Image
         src="/images/site/smile-consultation.png"
         alt=""

@@ -28,7 +28,7 @@ const galleryItems = [
 export function GalleryPage({ dictionary }: GalleryPageProps) {
   return (
     <>
-      <PageHero title={dictionary.gallery.title} lead={dictionary.gallery.lead} image="/images/site/header.png" />
+      <PageHero title={dictionary.gallery.title} lead={dictionary.gallery.lead} image="/images/site/dental-hero.png" />
       <section className="bg-white px-6 py-20 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
           {galleryItems.map((item, index) => (
