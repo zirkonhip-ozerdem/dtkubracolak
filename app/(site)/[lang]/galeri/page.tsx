@@ -7,5 +7,5 @@ export default async function Page({ params }: PageProps<"/[lang]/galeri">) {
 
   if (!isLocale(lang)) notFound();
 
-  return <GalleryPage dictionary={getDictionary(lang)} />;
+  return <GalleryPage lang={lang} dictionary={getDictionary(lang)} />;
 }
